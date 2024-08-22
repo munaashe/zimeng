@@ -13,9 +13,7 @@ const LayoutProvider = ({
     return (
 
         <>
-            <Header />
             {children}
-            <Footer />
         </>
     )
 };

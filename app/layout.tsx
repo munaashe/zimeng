@@ -1,17 +1,13 @@
 import Providers from "@/providers";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import {  JetBrains_Mono } from "next/font/google";
 
 export const metadata = {
   title: `Zim Engineering Community`,
-  description: `THere we go again!`,
+  description: `Here we go again!`,
 };
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 function Footer() {
   return (
@@ -27,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={jetBrainsMono.className}>
       <body>
         <Providers>
           <section className="min-h-[90vh]">

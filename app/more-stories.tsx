@@ -39,8 +39,8 @@ function PostPreview({
 
 export default function MoreStories({ morePosts }: { morePosts: any[] }) {
   return (
-    <section>
-      <h4 className="mb-8 text-2xl md:text-3xl font-bold tracking-tighter leading-tight text-center mt-12">
+    <section className="h-screen flex flex-col items-center justify-center">
+      <h4 className="mb-8 text-2xl md:text-3xl font-bold tracking-tighter leading-tight text-center mt-12d">
         Site coming soon
       </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
