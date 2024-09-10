@@ -1,10 +1,10 @@
-import Providers from "@/providers";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { CMS_NAME } from "@/lib/constants";
 
 export const metadata = {
-  title: `Zim Engineering Community`,
-  description: `THere we go again!`,
+  title: `Next.js and ${CMS_NAME} Example`,
+  description: `This is a blog built with Next.js and ${CMS_NAME}.`,
 };
 
 const inter = Inter({
@@ -12,14 +12,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
-
-function Footer() {
-  return (
-    <footer className="bg-accent-1 border-t border-accent-2">
-      here we go!
-    </footer>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -29,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <Providers>
-          <section className="min-h-[90vh]">
-            <main>{children}</main>
-          </section>
-        </Providers>
+        <section className="min-h-screen">
+          <main>{children}</main>
+        </section>
       </body>
     </html>
   );
