@@ -1,10 +1,11 @@
 import Providers from "@/providers";
 import "./globals.css";
-import {  JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
 export const metadata = {
-  title: `Zim Engineering Community`,
-  description: `Here we go again!`,
+  title: 'Zim Engineering Community',
+  description: 'Connecting innovators, engineers, and tech enthusiasts in Zimbabwe. Join us to collaborate, learn, and shape the future together!',
+  keywords: 'Zimbabwe, engineering, technology, community, collaboration, innovation, engineers, tech enthusiasts, learning, networking, Zim Engineering',
 };
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
