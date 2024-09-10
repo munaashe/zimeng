@@ -84,7 +84,7 @@ export default async function Page() {
   console.log(allPosts)
 
   return (
-    <div className="container mx-auto px-5">
+    <div className="">
       we start all over
     </div>
   );

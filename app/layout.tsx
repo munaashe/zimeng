@@ -22,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <section className="min-h-screen">
-          <main>
+        <section>
+          <main className='relative'>
             <Providers>
-              {children}
+              <div className='min-h-[78vh]'>
+                {children}
+              </div>
             </Providers>
           </main>
         </section>

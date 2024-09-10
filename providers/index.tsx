@@ -7,8 +7,10 @@ export default function Providers({
     children: React.ReactNode;
 }) {
     return (
-        <LayoutProvider>
-            {children}
-        </LayoutProvider>
+        <div className='z-50'>
+            <LayoutProvider>
+                {children}
+            </LayoutProvider>
+        </div>
     );
 }
