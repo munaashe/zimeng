@@ -2,9 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { CMS_NAME } from "@/lib/constants";
 import Providers from "@/providers";
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { notFound } from "next/navigation";
-import { supportedLocales } from "@/i18n";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
@@ -19,19 +18,19 @@ const inter = Inter({
 
 interface Props {
   children: React.ReactNode;
-  params: { locale: string };
 }
 
-export default function RootLayout(props: Props) {
-  const { children, params } = props;
-  const messages = useMessages();
+export default async function RootLayout({ children }: Props) {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
 
 
 
   return (
-    <html lang={params.locale} className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body>
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <main className='relative'>
               <div className='min-h-[78vh]'>
