@@ -100,7 +100,7 @@ const Header = () => {
                                                 } transition-all duration-300 ease-in-out`}
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
-                                            {item.name}
+                                            {t(`header.${item.name}`)}
                                         </Link>
                                     </li>
                                 );
@@ -114,3 +114,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
