@@ -6,5 +6,11 @@
         "Events": "Zviitiko",
         "Giving Back": "Rubatsiro",
         "language": "mutauro"
+    },
+    "footer": {
+        "terms": "Maitiro uye Mitemo",
+        "privacy": "Mutemo weKuchengetedza",
+        "contact": "Kubata",
+        "rights": "Kodzero Dzese Dzakachengetedzwa"
     }
 }

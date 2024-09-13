@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'next-i18next';
-
+import { useRouter } from 'next/router';
+import Dropdown from '../ui-system/dropdown';
 type MenuItem = {
     name: string;
     href: string;
@@ -17,6 +18,18 @@ const menuItems: MenuItem[] = [
     { name: 'Events', href: '/events' },
     { name: 'Giving Back', href: '/egb' },
 ];
+const ZimFlagSVG = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M19.69 11.21l-1.98-3.65a1 1 0 0 0-1.72-.19L12 11.31l-3.99-3.65a1 1 0 0 0-1.72.19L5.31 11.21 3.33 8.9a1 1 0 0 0-1.72.19L0 11.31l3.64 3.65a1 1 0 0 0 1.71-.19l2.97-3.65 3.99 3.65a1 1 0 0 0 1.72-.19l2.99-3.65 3.69 3.65a1 1 0 0 0 1.72-.19L24 11.31l-3.64-3.65a1 1 0 0 0-1.72.19l-2.97 3.65-3.99-3.65a1 1 0 0 0-1.72.19l-2.99 3.65-2.98-3.65a1 1 0 0 0-1.72.19L0 11.31l3.69 3.65a1 1 0 0 0 1.71-.19L8.64 11.31l4.35-4.1 4.35 4.1z" />
+    </svg>
+);
+const languages = [
+    { name: 'English', code: 'en', flag: <ZimFlagSVG /> },
+    { name: 'Shona', code: 'sn', flag: <ZimFlagSVG /> },
+    { name: 'Ndebele', code: 'nd', flag: <ZimFlagSVG /> }
+];
+
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,6 +39,20 @@ const Header = () => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    const { i18n } = useTranslation();
+    const router = useRouter(); // Use router from next/router
+
+    const changeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+        router.push(router.asPath, router.asPath, { locale: lang });
+    };
+
+    const languageItems = languages.map((lang) => ({
+        name: lang.name,
+        icon: lang.flag, // Optional icon
+        onClick: () => changeLanguage(lang.code)
+    }));
 
     return (
         <header className=' mb-4 border-b-[2px] border-slate-200'>
@@ -39,12 +66,7 @@ const Header = () => {
                         />
                     </Link>
                     <div className="flex items-center lg:order-2">
-                        <Link
-                            href="#"
-                            className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                        >
-                            {t('header.language')}
-                        </Link>
+                        <Dropdown items={languageItems} />
                         <button
                             onClick={toggleMobileMenu}
                             type="button"

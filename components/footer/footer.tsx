@@ -1,8 +1,12 @@
+'use client'
+
 import Link from 'next/link';
 import { FC } from 'react';
+import { useTranslation, UseTranslation } from 'next-i18next';
 
 const Footer: FC = () => {
     const currentYear = new Date().getFullYear();
+    const { t } = useTranslation()
 
     return (
         <footer className="bg-white shadow">
@@ -10,22 +14,22 @@ const Footer: FC = () => {
                 <span className="text-sm text-gray-500 sm:text-center  mdLflex-1">
                     © {currentYear}{' '}
                     ZimEng™
-                    . All Rights Reserved.
+                    . {t('footer.rights')}
                 </span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500  sm:mt-0">
                     <li>
                         <Link href="/terms" className="hover:underline me-4">
-                            Terms & Conditions
+                            {t('footer.terms')}
                         </Link>
                     </li>
                     <li>
                         <Link href="/privacy" className="hover:underline me-4 ">
-                            Privacy Policy
+                            {t('footer.privacy')}
                         </Link>
                     </li>
                     <li>
                         <Link href="/contact" className="hover:underline">
-                            Contact
+                            {t('footer.contact')}
                         </Link>
                     </li>
                 </ul>
