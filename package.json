@@ -1,0 +1,35 @@
+{
+  "name": "zimeng",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^16.6.10",
+    "@contentful/rich-text-plain-text-renderer": "^16.2.10",
+    "@contentful/rich-text-react-renderer": "^15.22.11",
+    "contentful": "^10.15.1",
+    "i18next": "^23.15.1",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-http-backend": "^2.6.1",
+    "next": "14.2.11",
+    "next-i18next": "^15.3.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-i18next": "^15.0.1",
+    "react-lottie": "^1.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
