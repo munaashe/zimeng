@@ -1,16 +1,16 @@
 {
     "header": {
-        "Articles": "Nhau",
-        "Employment": "Mabasa",
+        "Articles": "Indaba",
+        "Employment": "Umsebenzi",
         "Tenders": "Ama tender",
-        "Events": "Zviitiko",
-        "Giving Back": "Rubatsiro",
-        "language": "mutauro"
+        "Events": "Imicimbi",
+        "Giving Back": "Ukubisela",
+        "language": "Ulimi"
     },
     "footer": {
-        "terms": "Maitiro uye Mitemo",
-        "privacy": "Mutemo weKuchengetedza",
-        "contact": "Kubata",
-        "rights": "Kodzero Dzese Dzakachengetedzwa"
+        "terms": "isigaba",
+        "privacy": "ubumfihlo",
+        "contact": "Ucingo Lwethu",
+        "rights": "Amalungelo"
     }
 }
