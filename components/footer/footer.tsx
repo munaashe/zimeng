@@ -1,12 +1,11 @@
-'use client'
 
 import Link from 'next/link';
 import { FC } from 'react';
-import { useTranslation, UseTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
 const Footer: FC = () => {
     const currentYear = new Date().getFullYear();
-    const { t } = useTranslation()
+    const t = useTranslations('footer')
 
     return (
         <footer className="bg-white shadow">
@@ -14,22 +13,22 @@ const Footer: FC = () => {
                 <span className="text-sm text-gray-500 sm:text-center  mdLflex-1">
                     © {currentYear}{' '}
                     ZimEng™
-                    . {t('footer.rights')}
+                    . {t('rights')}
                 </span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500  sm:mt-0">
                     <li>
                         <Link href="/terms" className="hover:underline me-4">
-                            {t('footer.terms')}
+                            {t('terms')}
                         </Link>
                     </li>
                     <li>
                         <Link href="/privacy" className="hover:underline me-4 ">
-                            {t('footer.privacy')}
+                            {t('privacy')}
                         </Link>
                     </li>
                     <li>
                         <Link href="/contact" className="hover:underline">
-                            {t('footer.contact')}
+                            {t('contact')}
                         </Link>
                     </li>
                 </ul>

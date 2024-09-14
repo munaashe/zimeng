@@ -1,4 +1,6 @@
 import React from 'react'
+import { GetStaticProps } from 'next';
+
 
 const GivingBack = () => {
     return (

@@ -1,16 +1,16 @@
 {
     "header": {
-        "Articles": "Nau",
+        "Articles": "Nhau",
         "Employment": "Mabasa",
         "Tenders": "Ma tender",
         "Events": "Zviitiko",
         "Giving Back": "Rubatsiro",
-        "language": "mutauro"
+        "language": "Chinja Mutauro"
     },
     "footer": {
         "terms": "Maitiro uye Mitemo",
-        "privacy": "Mutemo weKuchengetedza",
-        "contact": "Kubata",
+        "privacy": "Chengetedzo Yemashoko",
+        "contact": "Tibatei",
         "rights": "Kodzero Dzese Dzakachengetedzwa"
     }
 }

@@ -1,16 +1,12 @@
+const withNextIntl = require("next-intl/plugin")("./i18n.ts");
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    loader: "custom",
-    formats: ["image/avif", "image/webp"],
-  },
-  i18n: {
-    locales: ['en', 'sh', 'nd'],
-    defaultLocale: 'en',
-    localeDetection: false,
-  },
-  reactStrictMode: true,
-};
-
-module.exports = nextConfig;
+module.exports = withNextIntl({
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: '/app/api/:path*',
+            },
+        ];
+    },
+});

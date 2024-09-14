@@ -5,9 +5,9 @@
         "Tenders": "Tenders",
         "Events": "Events",
         "Giving Back": "Giving Back",
-        "language": "language"
+        "language": "Change Language"
     },
-    "footer":{
+    "footer": {
         "terms": "Terms & Conditions",
         "privacy": "Privacy Policy",
         "contact": "Contact",
