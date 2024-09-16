@@ -61,30 +61,23 @@ const Header: React.FC = () => {
                                 aria-expanded={isMobileMenuOpen}
                             >
                                 {isMobileMenuOpen ? (
-                                    <svg
-                                        className="w-6 h-6"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clipRule="evenodd"
-                                        />
+                                    <svg className='h-6 w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="style=linear">
+                                            <g id="close">
+                                                <path id="vector" d="M6.75024 6.74512L17.2551 17.25" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_2" d="M17.255 6.74512L6.75006 17.2499" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                            </g>
+                                        </g>
                                     </svg>
                                 ) : (
-                                    <svg
-                                        className="w-6 h-6"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                            clipRule="evenodd"
-                                        />
+                                    <svg className='h-6 w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="style=linear">
+                                            <g id="menu-fries">
+                                                <path id="vector" d="M3 6H21" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_2" d="M9 12L21 12" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_3" d="M3 18H21" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                            </g>
+                                        </g>
                                     </svg>
                                 )}
                             </button>
