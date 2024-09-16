@@ -10,11 +10,14 @@
     "serve": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
     "@contentful/rich-text-html-renderer": "^16.6.10",
     "@contentful/rich-text-plain-text-renderer": "^16.2.10",
     "@contentful/rich-text-react-renderer": "^15.22.11",
     "contentful": "^10.15.1",
     "fs": "^0.0.1-security",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
     "json-server": "^1.0.0-alpha.23",
     "next": "14.2.2",
     "next-intl": "^3.11.3",
