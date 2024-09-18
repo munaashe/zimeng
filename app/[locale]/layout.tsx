@@ -11,10 +11,10 @@ import Providers from "@/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
-export const metadata: Metadata = {
-  title: 'Books',
-  description: 'A good library for Books. Listed by Title, Author, and with information such as prices available.',
+export const metadata = {
+  title: 'Zim Engineering Community',
+  description: 'Connecting innovators, engineers, and tech enthusiasts in Zimbabwe. Join us to collaborate, learn, and shape the future together!',
+  keywords: 'Zimbabwe, engineering, technology, community, collaboration, innovation, engineers, tech enthusiasts, learning, networking, Zim Engineering',
 };
 
 interface Props {
