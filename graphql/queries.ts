@@ -1,87 +1,95 @@
-import { gql } from "graphql-request";
+import { gql } from '@apollo/client';
 
-
+// Query to get all articles
 export const GET_ARTICLES = gql`
   query GetArticles {
-    articleCollection {
+    engineeringMagazineCollection {
       items {
-        slug
         title
-        coverImage {
-          url
+        description {
+          json
         }
+        publishedDate
+        featuredImage {
+          url
+          title
+        }
+        excerpt
+        slug
+        category
         author {
           name
-          image {
+          qualification
+          jobTitle
+          picture {
             url
           }
-          email
-          profession
-          qualifications
-        }
-        content {
-          json
         }
       }
     }
   }
 `;
 
-export const GET_EMPLOYMENT = gql`
-  query GetEmployment {
-    employmentCollection {
+export const GET_JOBS = gql`
+  query GetJobs {
+    jobCollection {
       items {
         title
-        company
-        image {
-          url
-        }
-        qualifications {
+        location
+        description {
           json
         }
-        responsibilities {
-          json
+        applicationDeadline
+        company {
+          name
+          logo {
+            url
+          }
         }
-        applyBy
-        dueDate
       }
     }
   }
 `;
 
+// Query to get all tenders
 export const GET_TENDERS = gql`
-    query GetTenders {
-        tendersCollection {
-           items {
-                institution
-                deadline
-                title
-                description {
-                    json
-                }
-                bid {
-                    json
-                }
-            }
+  query GetTenders {
+    tenderCollection {
+      items {
+        title
+        closingDate
+        description {
+          json
         }
+        organization {
+          name
+          logo {
+            url
+          }
+        }
+      }
     }
+  }
 `;
 
-
+// Query to get all events
 export const GET_EVENTS = gql`
-    query GetEvents {
-        eventsCollection {
-            items {
-                title
-                date
-                venue
-                description {
-                    json
-                }
-                rsvp {
-                    json
-                }
-            }
+  query GetEvents {
+    eventCollection {
+      items {
+        title
+        date
+        location
+        description {
+          json
         }
+        organizer {
+          name
+          logo {
+            url
+          }
+        }
+      }
     }
+  }
 `;

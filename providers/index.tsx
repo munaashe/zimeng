@@ -1,18 +1,21 @@
-'use client'
+'use client';
 
-import React from "react";
-import LayoutProvider from "./layout-provider";
+import React from 'react';
+import LayoutProvider from './layout-provider';
+import ApolloProviderWrapper from './apollo-provider';
 
-export default function Providers({
-    children,
-}: {
+interface ProvidersProps {
     children: React.ReactNode;
-}) {
+}
+
+export default function Providers({ children }: ProvidersProps) {
     return (
-        <div className='z-50'>
-            <LayoutProvider>
-                {children}
-            </LayoutProvider>
+        <div className="z-50">
+            <ApolloProviderWrapper>
+                <LayoutProvider>
+                    {children}
+                </LayoutProvider>
+            </ApolloProviderWrapper>
         </div>
     );
 }
