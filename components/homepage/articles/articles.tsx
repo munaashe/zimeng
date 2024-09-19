@@ -11,10 +11,10 @@ interface Props {
 const Articles: React.FC<Props> = ({ articles = [] }) => {
     return <>
         <Filter />
-        <Container className='!p-0 grid grid-cols-1 lg:grid-cols-2 w-full'>
+        <Container className='!p-0 grid grid-cols-1 lg:grid-cols-2 w-full gap-4'>
 
-            {articles.map((article) => (
-                <CardComponent article={article} />
+            {articles.map((article, index) => (
+                <CardComponent article={article} key={index} />
             ))}
         </Container>
     </>

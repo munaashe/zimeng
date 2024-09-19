@@ -21,7 +21,7 @@ export default function Home() {
     }
   }, [data])
 
-  console.log(articles)
+
   if (loading) return <p>Loading articles...</p>;
   if (error) return <p>Error loading articles: {error.message}</p>;
   return (
