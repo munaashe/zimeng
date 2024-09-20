@@ -1,0 +1,30 @@
+{
+    "header": {
+        "Articles": "Indaba",
+        "Employment": "Umsebenzi",
+        "Tenders": "Ama tender",
+        "Events": "Imicimbi",
+        "Giving Back": "Ukubisela",
+        "language": "Ulimi"
+    },
+    "footer": {
+        "terms": "isigaba",
+        "privacy": "ubumfihlo",
+        "contact": "Ucingo Lwethu",
+        "rights": "Amalungelo"
+    },
+    "months": {
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "Mar",
+        "Apr": "Apr",
+        "May": "May",
+        "Jun": "Jun",
+        "Jul": "Jul",
+        "Aug": "Aug",
+        "Sept": "Sept",
+        "Oct": "Oct",
+        "Nov": "Nov",
+        "Dec": "Dec"
+    }
+}

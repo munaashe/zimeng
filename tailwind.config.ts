@@ -1,21 +1,25 @@
 import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
 
-export default {
+const config: Config = {
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["var(--font-inter)"],
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "brown": "#895129",
+        "gray-1": "#fbfbfb",
+        "gray-2": "#f5f5f5"
+      }
     },
   },
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
-  plugins: [typography],
-} satisfies Config;
+  plugins: [],
+};
+export default config;

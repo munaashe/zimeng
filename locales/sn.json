@@ -1,0 +1,30 @@
+{
+    "header": {
+        "Articles": "Nhau",
+        "Employment": "Mabasa",
+        "Tenders": "Ma tender",
+        "Events": "Zviitiko",
+        "Giving Back": "Rubatsiro",
+        "language": "Chinja Mutauro"
+    },
+    "footer": {
+        "terms": "Maitiro uye Mitemo",
+        "privacy": "Chengetedzo Yemashoko",
+        "contact": "Tibatei",
+        "rights": "Kodzero Dzese Dzakachengetedzwa"
+    },
+    "months": {
+        "Jan": "Ndira",
+        "Feb": "Nukadzi",
+        "Mar": "Kurume",
+        "Apr": "Kubvumbi",
+        "May": "Chivabvu",
+        "Jun": "Chikumi",
+        "Jul": "Chikunguru",
+        "Aug": "Nyamavhuvhu",
+        "Sept": "Gunyana",
+        "Oct": "Gumiguru",
+        "Nov": "Mbudzi",
+        "Dec": "Zvita"
+    }
+}

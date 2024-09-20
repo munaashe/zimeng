@@ -1,0 +1,30 @@
+{
+    "header": {
+        "Articles": "Articles",
+        "Employment": "Employment",
+        "Tenders": "Tenders",
+        "Events": "Events",
+        "Giving Back": "Giving Back",
+        "language": "Change Language"
+    },
+    "footer": {
+        "terms": "Terms & Conditions",
+        "privacy": "Privacy Policy",
+        "contact": "Contact",
+        "rights": "All rights reserved"
+    },
+    "months": {
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "Mar",
+        "Apr": "Apr",
+        "May": "May",
+        "Jun": "Jun",
+        "Jul": "Jul",
+        "Aug": "Aug",
+        "Sept": "Sept",
+        "Oct": "Oct",
+        "Nov": "Nov",
+        "Dec": "Dec"
+    }
+}
