@@ -19,7 +19,10 @@ const ArticleCard = ({ article }: Props) => {
         category = '',
         author
     } = article || []
-    console.log(publishedDate)
+    const truncateText = (text: string, maxLength: number) => {
+        return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+    };
+
     return (
         <Link href={`/articles/${slug}`} className='hover:opacity-[95%]'>
             <Container className='!p-0 bg-gray-1 hover:bg-gray-2'>
@@ -31,8 +34,8 @@ const ArticleCard = ({ article }: Props) => {
                     className='h-[230px] w-full object-cover'
                 />
                 <div className='p-2 pt-4'>
-                    <Text variant='title5'additional='!h-[70px]' color='black'>
-                        {title}
+                    <Text variant='title5' additional='!h-[70px]' color='black'>
+                        {truncateText(title, 80)}
                     </Text>
                     <div className='flex justify-between items-center pt-4 w-full'>
                         <div className='flex justify-start items-center gap-2 w-full'>
