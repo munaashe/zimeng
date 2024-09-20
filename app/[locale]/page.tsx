@@ -29,7 +29,7 @@ export default function Home() {
   if (error) return <p>Error loading articles: {error.message}</p>;
 
   return (
-    <Container className="min-h-[70vh] !py-0">
+    <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
 
       <Container className="!p-0 grid grid-cols-1 md:grid-cols-7 md:gap-4">
         <div className="md:col-span-5 ">
