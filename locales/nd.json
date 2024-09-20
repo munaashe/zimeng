@@ -12,5 +12,19 @@
         "privacy": "ubumfihlo",
         "contact": "Ucingo Lwethu",
         "rights": "Amalungelo"
+    },
+    "months": {
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "Mar",
+        "Apr": "Apr",
+        "May": "May",
+        "Jun": "Jun",
+        "Jul": "Jul",
+        "Aug": "Aug",
+        "Sept": "Sept",
+        "Oct": "Oct",
+        "Nov": "Nov",
+        "Dec": "Dec"
     }
 }

@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* hero carousel*/
+.slick-arrow {
+    z-index: 10;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 40px;
+    /* Set width */
+    height: 40px;
+    /* Set height */
+}
+
+.slick-next {
+    right: 20px;
+    /* Position */
+}
+
+.slick-prev {
+    left: 20px;
+    /* Position */
+}
+
+.slick-dots {
+    bottom: 30px;
+    /* Adjust position */
+}
+
+.slick-dots li button {
+    width: 12px;
+    /* Size */
+    height: 12px;
+    /* Size */
+    border-radius: 50%;
+    /* Round */
+    background: white;
+    /* Color */
+}
+
+.slick-dots li.slick-active button {
+    background: #ffffff;
+    /* Active color */
+    opacity: 1;
+    /* Visibility */
+}
+
+.slick-dots li button:before {
+    font-size: 0;
+    /* Hide default dots */
+}
+
+.hero-carousel {
+    position: relative;
+}
