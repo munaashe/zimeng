@@ -1,4 +1,4 @@
-import { Article } from '@/utils/Types'
+import { Article, Event } from '@/utils/Types'
 import React from 'react'
 import Container from '../ui-components/containter';
 import Image from 'next/image';
