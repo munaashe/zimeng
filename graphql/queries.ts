@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 // Query to get all articles
-export const GET_ARTICLES = gql`
-  query GetArticles {
-    engineeringMagazineCollection {
+export const GET_ARTICLES_WITH_CATEGORIES = gql`
+  query GetArticles($limit: Int!, $skip: Int!, $category: String) {
+    engineeringMagazineCollection(limit: $limit, skip: $skip, where: { category: $category }) {
       items {
         title
         description {
@@ -25,6 +25,12 @@ export const GET_ARTICLES = gql`
             url
           }
         }
+      }
+      total
+    }
+    categories: engineeringMagazineCollection {
+      items {
+        category
       }
     }
   }
