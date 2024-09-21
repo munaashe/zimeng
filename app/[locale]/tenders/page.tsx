@@ -25,7 +25,7 @@ const Tenders = () => {
 
     return (
         <Container>
-            <Filter />
+            {/*<Filter />*/}
             <div>
                 {tenders.map((tender, index) => (
                     <CardComponent article={tender} key={index} />

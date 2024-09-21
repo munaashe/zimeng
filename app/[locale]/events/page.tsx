@@ -26,7 +26,7 @@ const Events = () => {
 
     return (
         <Container>
-            <Filter />
+            {/*<Filter />*/}
             <div>
                 {events.map((event, index) => (
                     <CardComponent article={event} key={index} />
