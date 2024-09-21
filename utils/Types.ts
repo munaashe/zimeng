@@ -67,3 +67,8 @@ export interface Tender {
         json: any;
     };
 }
+
+export interface Category {
+    category: string;
+    __typename: string;
+}
