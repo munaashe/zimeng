@@ -24,7 +24,7 @@ const Employment = () => {
     if (error) return <p>Error loading articles: {error.message}</p>;
     return (
         <Container>
-            <Filter />
+            {/*<Filter />*/}
             <div>
                 {jobs.map((job, index) => (
                     <CardComponent article={job} key={index} />
