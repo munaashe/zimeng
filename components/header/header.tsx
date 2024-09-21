@@ -64,8 +64,8 @@ const Header: React.FC = () => {
                                     <svg className='h-6 w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="style=linear">
                                             <g id="close">
-                                                <path id="vector" d="M6.75024 6.74512L17.2551 17.25" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
-                                                <path id="vector_2" d="M17.255 6.74512L6.75006 17.2499" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector" d="M6.75024 6.74512L17.2551 17.25" stroke="#895129" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_2" d="M17.255 6.74512L6.75006 17.2499" stroke="#895129" strokeWidth="1.5" strokeLinecap="round" />
                                             </g>
                                         </g>
                                     </svg>
@@ -73,9 +73,9 @@ const Header: React.FC = () => {
                                     <svg className='h-6 w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="style=linear">
                                             <g id="menu-fries">
-                                                <path id="vector" d="M3 6H21" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
-                                                <path id="vector_2" d="M9 12L21 12" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
-                                                <path id="vector_3" d="M3 18H21" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector" d="M3 6H21" stroke="#895129" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_2" d="M9 12L21 12" stroke="#895129" strokeWidth="1.5" strokeLinecap="round" />
+                                                <path id="vector_3" d="M3 18H21" stroke="#895129" strokeWidth="1.5" strokeLinecap="round" />
                                             </g>
                                         </g>
                                     </svg>
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                                 } justify-between items-center w-full lg:flex lg:w-auto lg:order-1 bg-white z-[100]`}
                             id="mobile-menu-2"
                         >
-                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0">
                                 {menuItems.map((item) => {
                                     const isActive = pathname === item.href;
                                     return (
