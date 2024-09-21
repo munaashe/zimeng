@@ -28,7 +28,7 @@ export const LocaleSwitcher: React.FC = () => {
         <div className="relative md:w-[120px] lg:ml-8">
             <button
                 type="button"
-                className=" p-4 md:p-2 px-8 rounded-full hover:bg-green-500 bg-brown text-white focus:outline-none whitespace-nowrap text-[12px] lg:text-[14px] font-bold px-4"
+                className=" p-2 hover:bg-green-500 bg-brown text-white focus:outline-none whitespace-nowrap text-[12px] lg:text-[14px] font-bold px-4"
                 onClick={toggleDropdown}
             >
 

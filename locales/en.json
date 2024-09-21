@@ -26,5 +26,7 @@
         "Oct": "Oct",
         "Nov": "Nov",
         "Dec": "Dec"
-    }
+    },
+    "categories": "Categories",
+    "all": "All"
 }

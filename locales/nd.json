@@ -5,7 +5,7 @@
         "Tenders": "Ama tender",
         "Events": "Imicimbi",
         "Giving Back": "Ukubisela",
-        "language": "Ulimi"
+        "language": "Tshintsha ulimi"
     },
     "footer": {
         "terms": "isigaba",
@@ -26,5 +26,7 @@
         "Oct": "Oct",
         "Nov": "Nov",
         "Dec": "Dec"
-    }
+    },
+    "categories": "Categories",
+    "all": "All"
 }

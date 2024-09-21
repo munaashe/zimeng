@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 // Query to get all articles
-export const GET_ARTICLES = gql`
-  query GetArticles {
-    engineeringMagazineCollection {
+export const GET_ARTICLES_WITH_CATEGORIES = gql`
+  query GetArticles($limit: Int!, $skip: Int!, $category: String) {
+    engineeringMagazineCollection(limit: $limit, skip: $skip, where: { category: $category }) {
       items {
         title
         description {
@@ -26,6 +26,12 @@ export const GET_ARTICLES = gql`
           }
         }
       }
+      total
+    }
+    categories: engineeringMagazineCollection {
+      items {
+        category
+      }
     }
   }
 `;
@@ -35,16 +41,21 @@ export const GET_JOBS = gql`
     jobCollection {
       items {
         title
+        company
+        type
+        industry
         location
-        description {
+        advertisedDate
+        deadline
+        qualifications{
+           json
+        }
+        responsibilities{
           json
         }
-        applicationDeadline
-        company {
-          name
-          logo {
-            url
-          }
+        slug
+        apply{
+          json
         }
       }
     }
@@ -57,15 +68,14 @@ export const GET_TENDERS = gql`
     tenderCollection {
       items {
         title
-        closingDate
-        description {
+        slug
+        deadline
+        institution
+        details {
           json
         }
-        organization {
-          name
-          logo {
-            url
-          }
+        bid {
+          json
         }
       }
     }
@@ -79,15 +89,16 @@ export const GET_EVENTS = gql`
       items {
         title
         date
-        location
+        venue
+        slug
         description {
           json
         }
-        organizer {
-          name
-          logo {
-            url
-          }
+        rsvp {
+          json
+        }
+        poster {
+          url
         }
       }
     }
