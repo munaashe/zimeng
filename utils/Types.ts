@@ -42,7 +42,7 @@ export interface Job {
     title: string;
     company: string;
     type: string;
-    industry: string | null;
+    industry: string[];
     location: string;
     advertisedDate: string;
     deadline: string;
@@ -71,4 +71,13 @@ export interface Tender {
 export interface Category {
     category: string;
     __typename: string;
+}
+
+export interface Opportunity {
+    title: string;
+    slug: string;
+    description: {
+        __typename: "TenderDetails";
+        json: any;
+    };
 }

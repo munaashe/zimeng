@@ -34,6 +34,12 @@ export async function generateMetadata({ params }: Props) {
                 'Find the latest engineering job opportunities and career prospects in Zimbabwe.';
             keywords = 'jobs, employment, engineering, Zimbabwe, careers';
             break;
+        case 'opportunities':
+            title = 'Engineering Opportunities for Zimbabweans';
+            description =
+                'Find the latest engineering opportunities and  prospects in Zimbabwe.';
+            keywords = 'scholarships, grants, engineering, Zimbabwe, academics, researches';
+            break;
         default:
             notFound();
     }
@@ -47,5 +53,5 @@ export async function generateMetadata({ params }: Props) {
 
 
 export default function Layout({ children }: Props) {
-    return  <>{children} </>;
+    return <>{children} </>;
 }

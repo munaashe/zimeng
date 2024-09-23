@@ -37,6 +37,7 @@ const Header: React.FC = () => {
         { name: 'Employment', href: `/employment` },
         { name: 'Tenders', href: `/tenders` },
         { name: 'Events', href: `/events` },
+        { name: 'Opportunities', href: `/opportunities` },
         { name: 'Giving Back', href: `/egb` },
     ];
 
@@ -94,7 +95,7 @@ const Header: React.FC = () => {
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className={`relative block py-2 pr-4 pl-3 border-b-4 border-transparent font-bold max-w-32 mt-4 md:mt-0 text-[14px] md:text-[20px] whitespace-nowrap
+                                                className={`relative block py-2 pr-4 pl-3 border-b-4 border-transparent font-bold max-w-32 mt-4 md:mt-0 text-[14px] md:text-[18px] whitespace-nowrap
                                          ${isActive
                                                         ? 'text-green-600 border-green-500'
                                                         : 'text-gray-700 border-gray-300 border-b-2 md:border-transparent hover:border-b-4 hover:text-brown hover:border-brown'
