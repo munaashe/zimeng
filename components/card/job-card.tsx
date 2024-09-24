@@ -10,7 +10,6 @@ interface Props {
 }
 
 const JobCard = ({ job }: Props) => {
-    console.log(job)
     return (
         <Link href={`/employment/${job.slug}`} className='bg-[#333333]'>
             <Container className='bg-gray-1 hover:bg-gray-2 relative'>
