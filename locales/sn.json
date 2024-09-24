@@ -29,11 +29,14 @@
         "Dec": "Zvita"
     },
     "categories": "Miunganidzwa",
-    "all": "Yose",
+    "filters": "Mafirita",
+    "industries": "Ma Indasitiri",
+    "job types": "Mhando Dzebasa",
+    "all": "Ose",
     "item page": {
         "employment": "Mabasa",
         "events": "Zviitiko zvehwu Injiniya",
         "tenders": "MaTender Akashambadzwa",
-         "opportunities": "Mikana"
+        "opportunities": "Mikana"
     }
 }

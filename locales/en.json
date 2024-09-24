@@ -29,6 +29,9 @@
         "Dec": "Dec"
     },
     "categories": "Categories",
+    "filters": "Filters",
+    "industries": "Industries",
+    "job types": "Job types",
     "all": "All",
     "item page": {
         "employment": "Employment Opportunities",

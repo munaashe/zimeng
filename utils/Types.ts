@@ -74,6 +74,7 @@ export interface Category {
 }
 
 export interface Opportunity {
+    __typename: string;
     title: string;
     slug: string;
     description: {
