@@ -20,10 +20,10 @@ const EventCard = ({ event }: Props) => {
     const [day, month] = formatDate(date).split(' ');
     return (
         <Link href={`/events/${slug}`}>
-            <Container className='bg-gray-1 hover:bg-gray-2 '>
-                <div className='flex items-center justify-start gap-4'>
+            <Container className='bg-gray-1 hover:bg-gray-2 !px-2'>
+                <div className='grid grid-cols-7 gap-4'>
                     <div
-                        className="bg-cover bg-center h-[100px] w-[120px] flex items-center justify-end flex-col w-full"
+                        className="bg-cover bg-center h-[120px] !w-[140px] flex items-center justify-end flex-col col-span-2"
                         style={{ backgroundImage: `url('/assets/images/calendar.svg')` }}
                     >
                         <Text variant='title4'>
@@ -33,7 +33,7 @@ const EventCard = ({ event }: Props) => {
                             {month}
                         </Text>
                     </div>
-                    <Text variant='title5' >
+                    <Text variant='title5' additional='col-span-5 ml-4 !h-full flex items-center' >
                         {title}
                     </Text>
                 </div>
