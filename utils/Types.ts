@@ -77,6 +77,8 @@ export interface Opportunity {
     __typename: string;
     title: string;
     slug: string;
+    deadline: string;
+    institution: string;
     description: {
         __typename: "TenderDetails";
         json: any;

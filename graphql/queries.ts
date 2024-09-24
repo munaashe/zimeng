@@ -123,6 +123,8 @@ export const GET_OPPORTUNITIES = gql`
       items {
         title
         slug
+        deadline
+        institution
         description {
           json
         }
