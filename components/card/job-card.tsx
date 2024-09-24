@@ -27,12 +27,12 @@ const JobCard = ({ job }: Props) => {
                         {job.company}
                     </Text>
                 </div>
-                {job.location && <div className='flex justify-start items-center gap-4'>
+                <div className='flex justify-start items-center gap-4'>
                     <img src="/assets/images/category.svg" alt="" className='w-6 h-6' />
                     <Text variant='body2'>
                         {job.industry.join(', ')}
                     </Text>
-                </div>}
+                </div>
                 {job.location && <div className='flex justify-start items-center gap-4'>
                     <img src="/assets/images/location-pin.svg" alt="" className='w-6 h-6' />
                     <Text variant='body2'>
