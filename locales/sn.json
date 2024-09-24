@@ -5,7 +5,8 @@
         "Tenders": "Ma tender",
         "Events": "Zviitiko",
         "Giving Back": "Rubatsiro",
-        "language": "Chinja Mutauro"
+        "language": "Chinja Mutauro",
+        "Opportunities": "Mikana"
     },
     "footer": {
         "terms": "Maitiro uye Mitemo",
@@ -28,5 +29,14 @@
         "Dec": "Zvita"
     },
     "categories": "Miunganidzwa",
-    "all": "Yose"
+    "filters": "Mafirita",
+    "industries": "Ma Indasitiri",
+    "job types": "Mhando Dzebasa",
+    "all": "Ose",
+    "item page": {
+        "employment": "Mabasa",
+        "events": "Zviitiko zvehwu Injiniya",
+        "tenders": "MaTender Akashambadzwa",
+        "opportunities": "Mikana"
+    }
 }

@@ -59,6 +59,16 @@ export const GET_JOBS = gql`
         }
       }
     }
+    industries: jobCollection {
+      items {
+        industry
+      }
+    }
+    types: jobCollection {
+      items {
+        type
+      }
+    }
   }
 `;
 
@@ -99,6 +109,22 @@ export const GET_EVENTS = gql`
         }
         poster {
           url
+        }
+      }
+    }
+  }
+`;
+
+//query opportunities
+
+export const GET_OPPORTUNITIES = gql`
+  query Getopportunities {
+    opportunityCollection {
+      items {
+        title
+        slug
+        description {
+          json
         }
       }
     }

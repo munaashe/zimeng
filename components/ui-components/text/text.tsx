@@ -52,7 +52,7 @@ const Text = <C extends React.ElementType = 'p'>({
             classes = 'text-lg md:text-[4.5rem] font-bold';
             break;
         case 'title5':
-            classes = 'text-lg md:text-2xl font-bold';
+            classes = 'text-lg md:text-xl font-bold';
             break;
         case 'body1':
             classes = `text-lg md:text-3xl ${textWeight}`;

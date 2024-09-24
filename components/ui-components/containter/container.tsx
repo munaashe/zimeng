@@ -6,7 +6,7 @@ interface ContainerProps {
     ref?: MutableRefObject<HTMLDivElement | null>
 }
 
-const Container: React.FC<ContainerProps> = ({ children, className = '', ref = null }) => {
+const Container: React.FC<ContainerProps> = ({ children, className = '', ref }) => {
     return (
         <div className={`p-4 md:p-8 ${className}`} ref={ref}>
             {children}

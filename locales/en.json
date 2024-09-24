@@ -5,7 +5,8 @@
         "Tenders": "Tenders",
         "Events": "Events",
         "Giving Back": "Giving Back",
-        "language": "Change Language"
+        "language": "Change Language",
+        "Opportunities": "Opportunities"
     },
     "footer": {
         "terms": "Terms & Conditions",
@@ -28,5 +29,14 @@
         "Dec": "Dec"
     },
     "categories": "Categories",
-    "all": "All"
+    "filters": "Filters",
+    "industries": "Industries",
+    "job types": "Job types",
+    "all": "All",
+    "item page": {
+        "employment": "Employment Opportunities",
+        "events": "Engineering Events",
+        "tenders": "Advertised Tenders",
+        "opportunities": "Engineering Opportunities"
+    }
 }
