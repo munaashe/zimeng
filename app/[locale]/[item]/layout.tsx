@@ -40,6 +40,8 @@ export async function generateMetadata({ params }: Props) {
                 'Find the latest engineering opportunities and  prospects in Zimbabwe.';
             keywords = 'scholarships, grants, engineering, Zimbabwe, academics, researches';
             break;
+        case 'articles':
+            title='Articles'
         default:
             notFound();
     }

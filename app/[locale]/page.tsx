@@ -73,14 +73,18 @@ export default function Home() {
   };
 
   if (loading && articles.length === 0) {
-    return <p>Loading articles...</p>;
+    return (
+      <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
+        <SkeletonLoader />
+      </Container>
+    );
   }
+
 
   if (error) {
     return <p>Error loading articles: {error.message}</p>;
   }
 
-  // Main render
   return (
     <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
       <Container className="!p-0 grid grid-cols-1 md:grid-cols-7 md:gap-4">
@@ -108,3 +112,51 @@ export default function Home() {
     </Container>
   );
 }
+
+const SkeletonLoader = () => {
+  return (
+    <Container className="min-h-[70vh] mb-4 md:mb-12 animate-pulse">
+      <div className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
+        <div className="md:col-span-5 space-y-8">
+          <div className="w-full h-[480px] lg:h-[540px] bg-gray-200 rounded-md"></div>
+
+          <div className="space-y-6">
+            <div className="flex space-x-4">
+              <div className="w-1/3 h-32 bg-gray-200 rounded-md"></div>
+              <div className="flex-1 space-y-4">
+                <div className="w-3/4 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/2 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/3 h-4 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+
+            <div className="flex space-x-4">
+              <div className="w-1/3 h-32 bg-gray-200 rounded-md"></div>
+              <div className="flex-1 space-y-4">
+                <div className="w-3/4 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/2 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/3 h-4 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+
+            <div className="flex space-x-4">
+              <div className="w-1/3 h-32 bg-gray-200 rounded-md"></div>
+              <div className="flex-1 space-y-4">
+                <div className="w-3/4 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/2 h-6 bg-gray-200 rounded"></div>
+                <div className="w-1/3 h-4 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="hidden md:block md:col-span-2">
+          <div className="space-y-4">
+            <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
+};
