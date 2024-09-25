@@ -30,16 +30,11 @@ const SingleItemPage = () => {
   const params = useParams();
   const { slug, item } = params;
   const t = useTranslations('item page');
-  console.log(slug)
 
   const [itemData, setItemData] = useState<SingleItemType>(initialState);
 
   const pathname = `/${item}`;
-  console.log(params)
-
   type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities';
-
-  console.log(pathname)
 
   const queries: Record<QueryPaths, DocumentNode> = {
     '/employment': GET_JOB_BY_SLUG,
