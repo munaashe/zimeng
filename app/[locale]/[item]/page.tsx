@@ -145,9 +145,6 @@ const ItemsPage = () => {
     return (
         <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
             <Container className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
-                <div className="hidden md:block md:col-span-2">
-                    <Sidebar />
-                </div>
                 <div className="md:col-span-5">
                     <Text>
                         {t(pathname.slice(1))}
@@ -166,6 +163,9 @@ const ItemsPage = () => {
                         ))}
                     </Container>
                 </div>
+                <div className="hidden md:block md:col-span-2">
+                    <Sidebar />
+                </div>
             </Container>
         </Container>
     );
@@ -177,14 +177,6 @@ const SkeletonLoader = () => {
     return (
         <Container className="min-h-[70vh] mb-4 md:mb-12">
             <div className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
-
-                <div className="hidden md:block md:col-span-2">
-                    <div className="space-y-4">
-                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
-                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
-                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                </div>
                 <div className="md:col-span-5 space-y-8">
                     <div className="w-1/2 h-20 bg-gray-300 rounded-md mb-4 animate-pulse"></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -211,6 +203,13 @@ const SkeletonLoader = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+                <div className="hidden md:block md:col-span-2">
+                    <div className="space-y-4">
+                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
+                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
+                        <div className="w-full h-60 bg-gray-200 rounded animate-pulse"></div>
                     </div>
                 </div>
             </div>
