@@ -10,7 +10,6 @@ type Props = {
 }
 
 const EventCard = ({ event }: Props) => {
-    console.log(event)
     const {
         date,
         title,
