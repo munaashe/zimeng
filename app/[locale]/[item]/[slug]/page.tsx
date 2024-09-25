@@ -85,7 +85,7 @@ const SingleItemPage = () => {
           {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
           {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
         </div>
-        <div className='h-full w-full bg-gray-1 md:col-span-2'>
+        <div className='h-full w-full bg-gray-1 md:col-span-2 hidden md:block'>
           sidebar
         </div>
       </div>

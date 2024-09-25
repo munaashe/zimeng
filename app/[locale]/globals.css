@@ -57,3 +57,22 @@
 .hero-carousel {
     position: relative;
 }
+
+/* rich text styles*/
+.richText p {
+    text-align: justify;
+}
+
+.richText h1,
+.richText h2,
+.richText h3,
+.richText h4,
+.richText h5,
+.richText h6 {
+    margin-bottom: 1.5rem;
+}
+
+.richText p {
+    margin: 1rem 0;
+    /* Improve spacing between paragraphs */
+}
