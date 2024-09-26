@@ -16,7 +16,7 @@ import EventPage from './event';
 import OpportunityPage from './opportunity';
 import TenderPage from './tender';
 import JobPage from './job';
-import { SkeletonLoader } from '../page';
+import { SkeletonLoader } from '../skeleton-loader';
 
 type SingleItemType = {
   item: Tender | Job | Event | Opportunity | null;
