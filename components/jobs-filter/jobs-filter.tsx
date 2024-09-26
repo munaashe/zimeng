@@ -44,7 +44,7 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                     <div className={` flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'industries' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
                         onClick={() => setSelectedTab('industries')}
                     >
-                        <svg fill="#ffffff" height='30px' width='30px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                        <svg fill="#ffffff" height='20px' width='25px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                             <g id="SVGRepo_iconCarrier"> <style type="text/css"></style>
