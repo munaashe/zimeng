@@ -186,20 +186,6 @@ export const GET_JOB_BY_SLUG = gql`
         }
       }
     }
-    suggestedJobs: jobCollection(
-      limit: 3
-      where: { slug_not: $slug, industry_contains_some: $industry }
-    ) {
-      items {
-        title
-        slug
-        company
-        type
-        deadline
-        advertisedDate
-        location
-      }
-    }
   }
 `;
 
