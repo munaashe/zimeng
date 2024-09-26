@@ -173,7 +173,7 @@ const ItemsPage = () => {
 
 export default ItemsPage;
 
-const SkeletonLoader = () => {
+export const SkeletonLoader = () => {
     return (
         <Container className="min-h-[70vh] mb-4 md:mb-12">
             <div className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
