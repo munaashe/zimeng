@@ -15,6 +15,8 @@ import Container from '@/components/ui-components/containter';
 import EventPage from './event';
 import OpportunityPage from './opportunity';
 import TenderPage from './tender';
+import JobPage from './job';
+import { SkeletonLoader } from '../skeleton-loader';
 
 type SingleItemType = {
   item: Tender | Job | Event | Opportunity | null;
@@ -58,7 +60,7 @@ const SingleItemPage = () => {
         opportunities: 'opportunityCollection',
       };
 
-      const key = pathname.slice(1); 
+      const key = pathname.slice(1);
       const singularKey = singularKeyMap[key];
 
       const fetchedItem = data[`${singularKey}`]?.items[0] || null;
@@ -71,11 +73,16 @@ const SingleItemPage = () => {
     }
   }, [data, pathname]);
 
-  if (loading) return <div>loading</div>;
+  if (loading) return (
+    <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
+      <SkeletonLoader />
+    </Container>
+  );
   if (error) return <div>error</div>;
   const {
     __typename
   } = itemData?.item || {};
+
 
   return (
     <Container className='min-h-[78vh]'>
@@ -84,13 +91,16 @@ const SingleItemPage = () => {
           {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
           {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
           {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
+          {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
         </div>
-        <div className='h-full w-full bg-gray-1 md:col-span-2'>
+        <Container className='h-full w-full bg-gray-1 md:col-span-2 hidden md:block'>
           sidebar
-        </div>
+        </Container>
       </div>
     </Container>
   );
 };
 
 export default SingleItemPage;
+
+

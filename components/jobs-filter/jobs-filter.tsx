@@ -44,7 +44,7 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                     <div className={` flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'industries' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
                         onClick={() => setSelectedTab('industries')}
                     >
-                        <svg fill="#ffffff" height='30px' width='30px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                        <svg fill="#ffffff" height='20px' width='25px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                             <g id="SVGRepo_iconCarrier"> <style type="text/css"></style>
@@ -53,7 +53,7 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                                 </g>
                             </g>
                         </svg>
-                        <div className='font-semibold text-[18px]'>
+                        <div className='font-semibold text-[18px] hidden md:block'>
                             {t('industries')}
                         </div>
                     </div>
@@ -67,7 +67,7 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                                 <path d="M8.75 13.5C10.2869 13.5 11.5747 14.5668 11.9131 16.0003L21.25 16C21.6642 16 22 16.3358 22 16.75C22 17.1297 21.7178 17.4435 21.3518 17.4932L21.25 17.5L11.9129 17.5007C11.5741 18.9337 10.2866 20 8.75 20C7.21345 20 5.92594 18.9337 5.58712 17.5007L2.75 17.5C2.33579 17.5 2 17.1642 2 16.75C2 16.3703 2.28215 16.0565 2.64823 16.0068L2.75 16L5.58688 16.0003C5.92534 14.5668 7.21309 13.5 8.75 13.5ZM15.25 4C16.7869 4 18.0747 5.06682 18.4131 6.50034L21.25 6.5C21.6642 6.5 22 6.83579 22 7.25C22 7.6297 21.7178 7.94349 21.3518 7.99315L21.25 8L18.4129 8.00066C18.0741 9.43368 16.7866 10.5 15.25 10.5C13.7134 10.5 12.4259 9.43368 12.0871 8.00066L2.75 8C2.33579 8 2 7.66421 2 7.25C2 6.8703 2.28215 6.55651 2.64823 6.50685L2.75 6.5L12.0869 6.50034C12.4253 5.06682 13.7131 4 15.25 4Z" fill="#ffffff"></path>
                             </g>
                         </svg>
-                        <div className='font-semibold text-[18px] whitespace-nowrap'>
+                        <div className='font-semibold text-[18px] whitespace-nowrap hidden md:block'>
                             {t('job types')}
                         </div>
                     </div>
