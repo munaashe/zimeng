@@ -22,9 +22,10 @@ import TenderPage from './tender';
 import JobPage from './job';
 import { SkeletonLoader } from '../skeleton-loader';
 import CardComponent from '@/components/card';
+import ArticlePage from './article';
 
 type SingleItemType = {
-  item: Job | Tender | Event | Opportunity | null;
+  item: Job | Tender | Event | Opportunity | Article | null;
   suggestedItems: Job[] | Article[];
 };
 
@@ -70,8 +71,9 @@ const SingleItemPage = () => {
     ? useQuery(suggestedQuery, {
       variables: {
         industry: data?.jobCollection?.items[0]?.industry,
-        slug: data?.jobCollection?.items[0]?.slug,
+        slug: slug,
         type: data?.jobCollection?.items[0]?.type,
+        category: data?.engineeringMagazineCollection?.items[0]?.category,
         limit: 2
       },
       skip: !data,
@@ -84,7 +86,7 @@ const SingleItemPage = () => {
         tenders: 'tenderCollection',
         events: 'eventCollection',
         opportunities: 'opportunityCollection',
-        articles: 'articleCollection',
+        articles: 'engineeringMagazineCollection',
       };
 
       const key = pathname.slice(1);
@@ -92,8 +94,7 @@ const SingleItemPage = () => {
 
       const fetchedItem = data[`${singularKey}`]?.items[0] || null;
       const fetchedSuggestions = suggestedData?.[`suggested${singularKey}`]?.items || [];
-      console.log(suggestedData?.[`suggested${singularKey}`])
-      console.log(singularKey)
+
 
       setItemData({
         item: fetchedItem,
@@ -129,7 +130,6 @@ const SingleItemPage = () => {
 
   const { __typename } = itemData?.item || {};
 
-  console.log(itemData.suggestedItems)
   return (
     <Container className='min-h-[78vh]'>
       <div className='grid grid-cols-1 md:grid-cols-7 md:gap-4 h-full'>
@@ -138,6 +138,7 @@ const SingleItemPage = () => {
           {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
           {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
           {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
+          {__typename === 'EngineeringMagazine' && <ArticlePage article={itemData?.item as Article} />}
 
           {itemData?.suggestedItems.length > 0 && <Container>
             <Text variant='title5' additional='mt-8 md:mt-12'>

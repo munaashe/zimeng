@@ -112,7 +112,7 @@ export const GET_OPPORTUNITIES = gql`
 //article
 export const GET_ARTICLE_BY_SLUG = gql`
   query GetArticleBySlug($slug: String!) {
-    articleCollection(where: { slug: $slug }) {
+    engineeringMagazineCollection(where: { slug: $slug }) {
      items {
         title
         description {
@@ -126,29 +126,6 @@ export const GET_ARTICLE_BY_SLUG = gql`
         excerpt
         slug
         category
-        author {
-          name
-          qualification
-          jobTitle
-          picture {
-            url
-          }
-        }
-      }
-    }
-   suggestedArticles: engineeringMagazineCollection(
-      limit: 3
-      where: { slug_not: $slug, category_contains_some: $category }
-    ) {
-      items {
-        title
-        slug
-        company
-        publishedDate
-        featuredImage {
-          url
-          title
-        }
         author {
           name
           qualification
