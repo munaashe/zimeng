@@ -121,18 +121,11 @@ export const GET_ARTICLE_BY_SLUG = gql`
         publishedDate
         featuredImage {
           url
-          title
         }
-        excerpt
         slug
         category
         author {
           name
-          qualification
-          jobTitle
-          picture {
-            url
-          }
         }
       }
     }
