@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { DocumentNode, useQuery } from '@apollo/client';
 import { useTranslations } from 'next-intl';
@@ -9,18 +9,23 @@ import {
   GET_TENDER_BY_SLUG,
   GET_EVENT_BY_SLUG,
   GET_OPPORTUNITY_BY_SLUG,
+  GET_SUGGESTED_JOBS,
+  GET_SUGGESTED_ARTICLES,
+  GET_ARTICLE_BY_SLUG,
 } from '@/graphql/queries';
-import { Tender, Job, Opportunity, Event } from '@/utils/Types';
+import { Job, Tender, Event, Opportunity, Article } from '@/utils/Types';
 import Container from '@/components/ui-components/containter';
+import Text from '@/components/ui-components/text';
 import EventPage from './event';
 import OpportunityPage from './opportunity';
 import TenderPage from './tender';
 import JobPage from './job';
 import { SkeletonLoader } from '../skeleton-loader';
+import CardComponent from '@/components/card';
 
 type SingleItemType = {
-  item: Tender | Job | Event | Opportunity | null;
-  suggestedItems: any[];
+  item: Job | Tender | Event | Opportunity | null;
+  suggestedItems: Job[] | Article[];
 };
 
 const initialState: SingleItemType = {
@@ -35,22 +40,43 @@ const SingleItemPage = () => {
 
   const [itemData, setItemData] = useState<SingleItemType>(initialState);
 
-  const pathname = `/${item}`;
-  type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities';
+  const pathname = `/${item}` as QueryPaths;
+
+  type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
 
   const queries: Record<QueryPaths, DocumentNode> = {
     '/employment': GET_JOB_BY_SLUG,
     '/tenders': GET_TENDER_BY_SLUG,
     '/events': GET_EVENT_BY_SLUG,
     '/opportunities': GET_OPPORTUNITY_BY_SLUG,
+    '/articles': GET_ARTICLE_BY_SLUG,
   };
 
-  const { data, loading, error } = pathname in queries
-    ? useQuery(queries[pathname as QueryPaths], {
+  const suggestedQueries: Partial<Record<QueryPaths, DocumentNode>> = {
+    '/employment': GET_SUGGESTED_JOBS,
+    '/articles': GET_SUGGESTED_ARTICLES,
+  };
+
+  const query = queries[pathname as QueryPaths];
+  const suggestedQuery = suggestedQueries[pathname as QueryPaths];
+
+  const { data, loading, error } = query
+    ? useQuery(query, {
       variables: { slug },
     })
     : { data: null, loading: false, error: null };
 
+  const { data: suggestedData } = suggestedQuery
+    ? useQuery(suggestedQuery, {
+      variables: {
+        industry: data?.jobCollection?.items[0]?.industry,
+        slug: data?.jobCollection?.items[0]?.slug,
+        type: data?.jobCollection?.items[0]?.type,
+        limit: 2
+      },
+      skip: !data,
+    })
+    : { data: null };
   useEffect(() => {
     if (data) {
       const singularKeyMap: Record<string, string> = {
@@ -58,40 +84,72 @@ const SingleItemPage = () => {
         tenders: 'tenderCollection',
         events: 'eventCollection',
         opportunities: 'opportunityCollection',
+        articles: 'articleCollection',
       };
 
       const key = pathname.slice(1);
       const singularKey = singularKeyMap[key];
 
       const fetchedItem = data[`${singularKey}`]?.items[0] || null;
-      const fetchedSuggestions = data[`suggested${singularKey}`]?.items || [];
+      const fetchedSuggestions = suggestedData?.[`suggested${singularKey}`]?.items || [];
+      console.log(suggestedData?.[`suggested${singularKey}`])
+      console.log(singularKey)
 
       setItemData({
         item: fetchedItem,
         suggestedItems: fetchedSuggestions,
       });
     }
-  }, [data, pathname]);
+  }, [data, suggestedData, pathname]);
+
+  useEffect(() => {
+    if (suggestedData) {
+      const singularKeyMap: Record<string, string> = {
+        employment: 'jobCollection',
+        articles: 'engineeringMagazineCollection',
+      };
+
+      const key = pathname.slice(1);
+      const singularKey = singularKeyMap[key];
+
+      const fetchedSuggestions = suggestedData?.[singularKey]?.items || [];
+      setItemData((prev) => ({
+        ...prev,
+        suggestedItems: fetchedSuggestions
+      }))
+    }
+  }, [suggestedData])
 
   if (loading) return (
     <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
       <SkeletonLoader />
     </Container>
   );
-  if (error) return <div>error</div>;
-  const {
-    __typename
-  } = itemData?.item || {};
+  if (error) return <div>Error loading item</div>;
 
+  const { __typename } = itemData?.item || {};
 
+  console.log(itemData.suggestedItems)
   return (
     <Container className='min-h-[78vh]'>
-      <div className='grid grid-cols-1 md:grid-cols-7 md:gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-7 md:gap-4 h-full'>
         <div className='md:col-span-5'>
+          {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
           {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
           {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
           {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
-          {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
+
+          {itemData?.suggestedItems.length > 0 && <Container>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
+              {t('related')}
+            </Text>
+
+            <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
+              {itemData?.suggestedItems?.map((article, index) => (
+                <CardComponent article={article} key={index} />
+              ))}
+            </Container>
+          </Container>}
         </div>
         <Container className='h-full w-full bg-gray-1 md:col-span-2 hidden md:block'>
           sidebar
@@ -102,5 +160,4 @@ const SingleItemPage = () => {
 };
 
 export default SingleItemPage;
-
 

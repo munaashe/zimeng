@@ -16,7 +16,7 @@ const EventPage = ({ event }: Props) => {
     const [day, month] = formatDate(event.date).split(' ');
     console.log(event)
     return (
-        <Container className='min-h-[78vh]'>
+        <Container className=''>
             <div className='flex justify-between items-center'>
                 <div>
                     <Text variant='title4'>
@@ -42,11 +42,11 @@ const EventPage = ({ event }: Props) => {
                 </div>
             </div>
             {event.poster && <Image src={event.poster.url} alt={event.title} height={200} width={200} className='h-[520px] w-auto mt-8' />}
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('details')}
             </Text>
             <RichText content={event.description} />
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('reservations')}
             </Text>
             <RichText content={event.rsvp} />

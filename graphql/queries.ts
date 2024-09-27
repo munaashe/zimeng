@@ -250,3 +250,61 @@ export const GET_TENDER_BY_SLUG = gql`
   }
 `;
 
+//suggestions
+export const GET_SUGGESTED_ARTICLES = gql`
+  query GetSuggestedArticlesByCategory($category: String!, $limit: Int!, $slug: String!) {
+    engineeringMagazineCollection(
+      where: { 
+        category: $category, 
+        slug_not: $slug 
+      }, 
+      limit: $limit, 
+      order: publishedDate_DESC
+    ) {
+      items {
+        title
+        publishedDate
+        featuredImage {
+          url
+          title
+        }
+        slug
+        author {
+          name
+          qualification
+          jobTitle
+          picture {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_SUGGESTED_JOBS = gql`
+  query GetSuggestedJobsByIndustryOrType($industry: [String!], $type: String, $limit: Int!, $slug: String!) {
+    jobCollection(
+      where: {
+        OR: [
+          { industry_contains_all: $industry }, 
+          { type: $type }
+        ],
+        slug_not: $slug
+      }, 
+      limit: $limit, 
+      order: advertisedDate_DESC
+    ) {
+      items {
+        title
+        company
+        type
+        industry
+        location
+        advertisedDate
+        deadline
+        slug
+      }
+    }
+  }
+`;
