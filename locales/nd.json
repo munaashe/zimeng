@@ -46,5 +46,10 @@
         "opportunities": "Engineering Opportunities",
         "related": "Related"
     },
+    "egb": {
+        "title": "Engineers Giving Back",
+        "text": "Explore the numerous ways you can make a difference",
+        "contact": "Contact Us"
+    },
     "by": "By:"
 }

@@ -220,6 +220,27 @@ export const GET_TENDER_BY_SLUG = gql`
   }
 `;
 
+//egb
+export const GET_EGB = gql`
+   query GeEgb {
+    egbCollection {
+      items {
+        title
+        type
+        excerpt
+        featuredImage {
+          url
+          title
+        }
+        details{
+          json
+        }
+        slug
+      }
+    }
+  }
+`;
+
 //suggestions
 export const GET_SUGGESTED_ARTICLES = gql`
   query GetSuggestedArticlesByCategory($category: String!, $limit: Int!, $slug: String!) {

@@ -84,3 +84,13 @@ export interface Opportunity {
         json: any;
     };
 }
+
+export interface Egb {
+    __typename: string;
+    title: string;
+    type: string;
+    excerpt: string | null;
+    featuredImage: FeaturedImage;
+    details: JSON;
+    slug: string;
+}
