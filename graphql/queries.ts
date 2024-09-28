@@ -319,3 +319,18 @@ export const GET_SUGGESTED_JOBS = gql`
     }
   }
 `;
+
+//pages
+export const GET_PAGE_DATA= gql`
+  query GetPageData($slug: String!) {
+    pageCollection(where: { slug: $slug }) {
+      items {
+        title
+        details{
+          json
+        }
+        slug
+      }
+    }
+  }
+`;
