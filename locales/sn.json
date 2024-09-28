@@ -43,6 +43,15 @@
         "employment": "Mabasa",
         "events": "Zviitiko zvehwu Injiniya",
         "tenders": "MaTender Akashambadzwa",
-        "opportunities": "Mikana"
-    }
+        "opportunities": "Mikana",
+        "related": "Zvinoenderana"
+    },
+    "egb": {
+        "title": "Ma Injiniya Anoyamura",
+        "text": "Tine nzira dzakawanda dzekuti mubatsire vamwe nadzo",
+        "contact": "Tibatei",
+        "projects": "Zvirongwa",
+        "reports": "Shumo"
+    },
+    "by": "Na:"
 }

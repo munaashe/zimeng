@@ -13,7 +13,7 @@ type Props = {
 const OpportunityPage = ({ opportunity }: Props) => {
     const t = useTranslations()
     return (
-        <Container className='min-h-[78vh]'>
+        <Container className=''>
             <Text variant='title3'>
                 {opportunity.title}
             </Text>
@@ -30,7 +30,7 @@ const OpportunityPage = ({ opportunity }: Props) => {
                     {formatDate(opportunity.deadline)}
                 </Text>
             </div>
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('details')}
             </Text>
             <RichText content={opportunity.description} />

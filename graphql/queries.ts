@@ -112,7 +112,7 @@ export const GET_OPPORTUNITIES = gql`
 //article
 export const GET_ARTICLE_BY_SLUG = gql`
   query GetArticleBySlug($slug: String!) {
-    articleCollection(where: { slug: $slug }) {
+    engineeringMagazineCollection(where: { slug: $slug }) {
      items {
         title
         description {
@@ -121,41 +121,11 @@ export const GET_ARTICLE_BY_SLUG = gql`
         publishedDate
         featuredImage {
           url
-          title
         }
-        excerpt
         slug
         category
         author {
           name
-          qualification
-          jobTitle
-          picture {
-            url
-          }
-        }
-      }
-    }
-   suggestedArticles: engineeringMagazineCollection(
-      limit: 3
-      where: { slug_not: $slug, category_contains_some: $category }
-    ) {
-      items {
-        title
-        slug
-        company
-        publishedDate
-        featuredImage {
-          url
-          title
-        }
-        author {
-          name
-          qualification
-          jobTitle
-          picture {
-            url
-          }
         }
       }
     }
@@ -250,3 +220,102 @@ export const GET_TENDER_BY_SLUG = gql`
   }
 `;
 
+//egb
+export const GET_EGB = gql`
+   query GeEgb {
+    egbCollection {
+      items {
+        title
+        type
+        excerpt
+        featuredImage {
+          url
+          title
+        }
+        details{
+          json
+        }
+        slug
+      }
+    }
+  }
+`;
+
+export const GET_EGB_BY_SLUG = gql`
+   query GetEgbBySlug($slug: String!) {
+    egbCollection(where: { slug: $slug }) {
+      items {
+        title
+        type
+        excerpt
+        featuredImage {
+          url
+          title
+        }
+        details{
+          json
+        }
+        slug
+      }
+    }
+  }
+`;
+
+//suggestions
+export const GET_SUGGESTED_ARTICLES = gql`
+  query GetSuggestedArticlesByCategory($category: String!, $limit: Int!, $slug: String!) {
+    engineeringMagazineCollection(
+      where: { 
+        category: $category, 
+        slug_not: $slug 
+      }, 
+      limit: $limit, 
+      order: publishedDate_DESC
+    ) {
+      items {
+        title
+        publishedDate
+        featuredImage {
+          url
+          title
+        }
+        slug
+        author {
+          name
+          qualification
+          jobTitle
+          picture {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_SUGGESTED_JOBS = gql`
+  query GetSuggestedJobsByIndustryOrType($industry: [String!], $type: String, $limit: Int!, $slug: String!) {
+    jobCollection(
+      where: {
+        OR: [
+          { industry_contains_all: $industry }, 
+          { type: $type }
+        ],
+        slug_not: $slug
+      }, 
+      limit: $limit, 
+      order: advertisedDate_DESC
+    ) {
+      items {
+        title
+        company
+        type
+        industry
+        location
+        advertisedDate
+        deadline
+        slug
+      }
+    }
+  }
+`;

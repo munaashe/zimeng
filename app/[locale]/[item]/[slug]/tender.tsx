@@ -13,7 +13,7 @@ type Props = {
 const TenderPage = ({ tender }: Props) => {
     const t = useTranslations()
     return (
-        <Container className='min-h-[78vh]'>
+        <Container className=''>
             <Text variant='title3'>
                 {tender.title}
             </Text>
@@ -29,11 +29,11 @@ const TenderPage = ({ tender }: Props) => {
                     {formatDate(tender.deadline)}
                 </Text>
             </div>
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('details')}
             </Text>
             <RichText content={tender.details} />
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('bid')}
             </Text>
             <RichText content={tender.bid} />

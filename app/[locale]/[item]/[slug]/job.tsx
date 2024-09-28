@@ -14,7 +14,7 @@ const JobPage = ({ job }: Props) => {
     const t = useTranslations()
 
     return (
-        <Container className='min-h-[78vh]'>
+        <Container className=''>
             <div className='flex justify-between items-center w-full'>
                 <Text variant='title3'>
                     {job.title}
@@ -45,15 +45,15 @@ const JobPage = ({ job }: Props) => {
                     {job.type}
                 </div>
             </div>
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('responsibilities')}
             </Text>
             <RichText content={job.responsibilities} />
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('qualifications')}
             </Text>
             <RichText content={job.qualifications} />
-            <Text variant='title4' additional='mt-8 md:mt-12'>
+            <Text variant='title5' additional='mt-8 md:mt-12'>
                 {t('apply')}
             </Text>
             <RichText content={job.apply} />

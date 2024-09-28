@@ -43,6 +43,15 @@
         "employment": "Employment Opportunities",
         "events": "Engineering Events",
         "tenders": "Advertised Tenders",
-        "opportunities": "Engineering Opportunities"
-    }
+        "opportunities": "Engineering Opportunities",
+        "related": "Related"
+    },
+    "egb": {
+        "title": "Engineers Giving Back",
+        "text": "Explore the numerous ways you can make a difference",
+        "contact": "Contact Us",
+        "projects": "Projects",
+        "reports": "Reports"
+    },
+    "by": "By:"
 }

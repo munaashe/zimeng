@@ -6,7 +6,7 @@ import Sidebar from '@/components/homepage/sidebar';
 import JobsFilter from '@/components/jobs-filter';
 import Container from '@/components/ui-components/containter';
 import Text from '@/components/ui-components/text';
-import { GET_EVENTS, GET_JOBS, GET_TENDERS, GET_OPPORTUNITIES } from '@/graphql/queries';
+import { GET_EVENTS, GET_JOBS, GET_TENDERS, GET_OPPORTUNITIES, GET_SUGGESTED_JOBS, GET_SUGGESTED_ARTICLES, GET_ARTICLES_WITH_CATEGORIES } from '@/graphql/queries';
 import { Job, Tender, Event as EventType, Opportunity } from '@/utils/Types';
 import { DocumentNode, useQuery } from '@apollo/client';
 import { useTranslations } from 'next-intl';
@@ -46,18 +46,23 @@ const ItemsPage = () => {
     const [items, setItems] = useState<ItemsType>(initialState);
     const [jobFilterItems, setJobFilterItems] = useState<JobFilterItemsType>(filterInitialState)
 
-    type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities';
+    type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
 
-    const queries: Record<QueryPaths, DocumentNode> = {
+    const queries: Partial<Record<QueryPaths, DocumentNode>> = {
         '/employment': GET_JOBS,
         '/tenders': GET_TENDERS,
         '/events': GET_EVENTS,
         '/opportunities': GET_OPPORTUNITIES,
+        '/articles': GET_ARTICLES_WITH_CATEGORIES,
     };
 
-    const { data, loading, error, refetch } = pathname in queries
-        ? useQuery(queries[pathname as QueryPaths])
+    const query = queries[pathname as QueryPaths];
+
+    const { data, loading, error, refetch } = query
+        ? useQuery(query)
         : { data: null, loading: false, error: null, refetch: () => Promise.resolve() };
+
+
 
     useEffect(() => {
         if (data) {
@@ -66,6 +71,7 @@ const ItemsPage = () => {
                 tenders: 'tenderCollection',
                 events: 'eventCollection',
                 opportunities: 'opportunityCollection',
+                articles: 'magazineArticlesCollection'
             };
 
             const key = pathname === '/employment' ? 'jobs' : pathname.slice(1);
