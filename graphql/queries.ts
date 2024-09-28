@@ -241,6 +241,26 @@ export const GET_EGB = gql`
   }
 `;
 
+export const GET_EGB_BY_SLUG = gql`
+   query GetEgbBySlug($slug: String!) {
+    egbCollection(where: { slug: $slug }) {
+      items {
+        title
+        type
+        excerpt
+        featuredImage {
+          url
+          title
+        }
+        details{
+          json
+        }
+        slug
+      }
+    }
+  }
+`;
+
 //suggestions
 export const GET_SUGGESTED_ARTICLES = gql`
   query GetSuggestedArticlesByCategory($category: String!, $limit: Int!, $slug: String!) {

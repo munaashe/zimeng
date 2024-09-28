@@ -49,7 +49,9 @@
     "egb": {
         "title": "Engineers Giving Back",
         "text": "Explore the numerous ways you can make a difference",
-        "contact": "Contact Us"
+        "contact": "Contact Us",
+        "projects": "Projects",
+        "reports": "Reports"
     },
     "by": "By:"
 }
