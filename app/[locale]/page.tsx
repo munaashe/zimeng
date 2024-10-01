@@ -87,28 +87,21 @@ export default function Home() {
 
   return (
     <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
-      <Container className="!p-0 grid grid-cols-1 md:grid-cols-7 md:gap-4">
-        <div className="md:col-span-5 ">
-          <HeroCarousel articles={heroArticles} />
-          <InfiniteScroll
-            dataLength={articles.length}
-            next={loadMoreArticles}
-            hasMore={hasMore}
-            loader={<p>Loading more articles...</p>}
-            endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">No more articles to load</Text>}
-          >
-            <Articles
-              articles={articles}
-              categories={categories}
-              selectedCategory={selectedCategory}
-              onCategorySelect={handleCategorySelect}
-            />
-          </InfiniteScroll>
-        </div>
-        <div className="md:col-span-2">
-          <Sidebar />
-        </div>
-      </Container>
+      <HeroCarousel articles={heroArticles} />
+      <InfiniteScroll
+        dataLength={articles.length}
+        next={loadMoreArticles}
+        hasMore={hasMore}
+        loader={<p>Loading more articles...</p>}
+        endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">No more articles to load</Text>}
+      >
+        <Articles
+          articles={articles}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategorySelect={handleCategorySelect}
+        />
+      </InfiniteScroll>
     </Container>
   );
 }

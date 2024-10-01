@@ -1,10 +1,11 @@
+import Container from '@/components/ui-components/containter'
 import React from 'react'
 
 const Sidebar = () => {
     return (
-        <div className='hidden md:block h-full w-full bg-gray-1'>
-            sidebar
-        </div>
+        <Container className='hidden md:block h-full w-full bg-gray-1'>
+            yeah yeah yeah
+        </Container>
     )
 }
 

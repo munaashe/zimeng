@@ -132,30 +132,23 @@ const SingleItemPage = () => {
 
   return (
     <Container className='min-h-[78vh]'>
-      <div className='grid grid-cols-1 md:grid-cols-7 md:gap-4 h-full'>
-        <div className='md:col-span-5'>
-          {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
-          {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
-          {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
-          {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
-          {__typename === 'EngineeringMagazine' && <ArticlePage article={itemData?.item as Article} />}
+      {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
+      {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
+      {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
+      {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
+      {__typename === 'EngineeringMagazine' && <ArticlePage article={itemData?.item as Article} />}
 
-          {itemData?.suggestedItems.length > 0 && <Container>
-            <Text variant='title5' additional='mt-8 md:mt-12'>
-              {t('related')}
-            </Text>
+      {itemData?.suggestedItems.length > 0 && <Container>
+        <Text variant='title5' additional='mt-8 md:mt-12'>
+          {t('related')}
+        </Text>
 
-            <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
-              {itemData?.suggestedItems?.map((article, index) => (
-                <CardComponent article={article} key={index} />
-              ))}
-            </Container>
-          </Container>}
-        </div>
-        <Container className='h-full w-full bg-gray-1 md:col-span-2 hidden md:block'>
-          sidebar
+        <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
+          {itemData?.suggestedItems?.map((article, index) => (
+            <CardComponent article={article} key={index} />
+          ))}
         </Container>
-      </div>
+      </Container>}
     </Container>
   );
 };

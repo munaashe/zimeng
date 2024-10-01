@@ -150,29 +150,22 @@ const ItemsPage = () => {
     }
 
     return (
-        <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
-            <Container className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
-                <div className="md:col-span-5">
-                    <Text>
-                        {t(pathname.slice(1))}
-                    </Text>
-                    {pathname === '/employment' &&
-                        <JobsFilter
-                            industries={items.industries}
-                            jobTypes={items.jobTypes}
-                            filterItems={jobFilterItems}
-                            onFilterChange={onFilterChange}
-                        />}
+        <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0 !md:px-8">
+            <Text>
+                {t(pathname.slice(1))}
+            </Text>
+            {pathname === '/employment' &&
+                <JobsFilter
+                    industries={items.industries}
+                    jobTypes={items.jobTypes}
+                    filterItems={jobFilterItems}
+                    onFilterChange={onFilterChange}
+                />}
 
-                    <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
-                        {items?.dataItems?.map((article, index) => (
-                            <CardComponent article={article} key={index} />
-                        ))}
-                    </Container>
-                </div>
-                <div className="hidden md:block md:col-span-2">
-                    <Sidebar />
-                </div>
+            <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
+                {items?.dataItems?.map((article, index) => (
+                    <CardComponent article={article} key={index} />
+                ))}
             </Container>
         </Container>
     );
