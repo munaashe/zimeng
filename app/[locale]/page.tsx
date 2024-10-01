@@ -7,9 +7,9 @@ import Container from "@/components/ui-components/containter";
 import { Article, Category } from "@/utils/Types";
 import HeroCarousel from "@/components/homepage/hero-carousel";
 import Articles from "@/components/homepage/articles";
-import Sidebar from "@/components/homepage/sidebar";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Text from "@/components/ui-components/text";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -19,6 +19,7 @@ export default function Home() {
   const [hasMore, setHasMore] = useState(true);
   const [skip, setSkip] = useState(0);
   const limit = 10;
+  const t = useTranslations()
 
   const { data, loading, error, fetchMore, refetch } = useQuery(GET_ARTICLES_WITH_CATEGORIES, {
     variables: { limit, skip: 0, category: selectedCategory?.category || null },
@@ -32,8 +33,18 @@ export default function Home() {
       const fetchedArticles = data.engineeringMagazineCollection?.items || [];
       const fetchedCategories = data.categories?.items || [];
 
+      const categoryMap = new Map();
+
+      fetchedCategories.forEach((item: { category: any; }) => {
+        if (!categoryMap.has(item.category)) {
+          categoryMap.set(item.category, item);
+        }
+      });
+
+      const uniqueCategories = Array.from(categoryMap.values());
+
       setArticles(fetchedArticles);
-      setCategories(fetchedCategories);
+      setCategories(uniqueCategories);
       setHeroArticles(fetchedArticles.slice(0, 3));
 
       isFirstRender.current = false;
@@ -92,8 +103,8 @@ export default function Home() {
         dataLength={articles.length}
         next={loadMoreArticles}
         hasMore={hasMore}
-        loader={<p>Loading more articles...</p>}
-        endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">No more articles to load</Text>}
+        loader={<p>{t('loading')}</p>}
+        endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">{t('no more')}</Text>}
       >
         <Articles
           articles={articles}

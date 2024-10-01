@@ -1,3 +1,4 @@
+
 export type Locale = "en" | "sh" | 'nd';
 
 interface Author {
@@ -93,4 +94,9 @@ export interface Egb {
     featuredImage: FeaturedImage;
     details: JSON;
     slug: string;
+}
+
+export interface Ad {
+    link: string;
+    poster: FeaturedImage;
 }

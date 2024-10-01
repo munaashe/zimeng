@@ -44,7 +44,9 @@
         "events": "Zviitiko zvehwu Injiniya",
         "tenders": "MaTender Akashambadzwa",
         "opportunities": "Mikana",
-        "related": "Zvinoenderana"
+        "related": "Zvinoenderana",
+        "loading": "Zvimwe zviri kuburwa...",
+        "no more": "Haa matibata, zvapera"
     },
     "egb": {
         "title": "Ma Injiniya Anoyamura",
@@ -53,5 +55,8 @@
         "projects": "Zvirongwa",
         "reports": "Shumo"
     },
-    "by": "Na:"
+    "by": "Na:",
+    "loading": "Zvimwe zviri kuburwa...",
+    "no more": "Haa matibata, zvapera",
+    "sponsored": "Zvishambadzwa"
 }
