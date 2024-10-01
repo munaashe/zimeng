@@ -321,7 +321,7 @@ export const GET_SUGGESTED_JOBS = gql`
 `;
 
 //pages
-export const GET_PAGE_DATA= gql`
+export const GET_PAGE_DATA = gql`
   query GetPageData($slug: String!) {
     pageCollection(where: { slug: $slug }) {
       items {
@@ -330,6 +330,20 @@ export const GET_PAGE_DATA= gql`
           json
         }
         slug
+      }
+    }
+  }
+`;
+
+export const GET_ADS = gql`
+  query GetAds  {
+    adCollection {
+      items {
+        link
+        poster {
+          url
+          title
+        }
       }
     }
   }
