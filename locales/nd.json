@@ -44,7 +44,9 @@
         "events": "Engineering Events",
         "tenders": "Advertised Tenders",
         "opportunities": "Engineering Opportunities",
-        "related": "Related"
+        "related": "Related",
+        "loading": "Loading More...",
+        "no more": "No more articles to load"
     },
     "egb": {
         "title": "Engineers Giving Back",
@@ -53,5 +55,8 @@
         "projects": "Projects",
         "reports": "Reports"
     },
-    "by": "By:"
+    "by": "By:",
+    "loading": "Loading More...",
+    "no more": "No more articles to load",
+    "sponsored": "Sponsored"
 }
