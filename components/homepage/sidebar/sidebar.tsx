@@ -28,8 +28,8 @@ const Sidebar = () => {
                     {t('sponsored')}
                 </Text>}
                 <div className='flex flex-col items-center justify-center w-full'>
-                    {ads.map((ad) => (
-                        <Link href={ad.link} target='_blank' className='my-4'>
+                    {ads.map((ad, index) => (
+                        <Link href={ad.link} key={index} target='_blank' className='my-4'>
                             <Image
                                 src={ad.poster.url}
                                 alt=''

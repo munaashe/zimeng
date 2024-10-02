@@ -348,3 +348,12 @@ export const GET_ADS = gql`
     }
   }
 `;
+
+export const GET_LOGO = gql`
+  query GetLogo {
+    asset(id: "5i8P1UI9TGSpG8HEft8CT0") {
+      url
+      title
+    }
+  }
+`;
