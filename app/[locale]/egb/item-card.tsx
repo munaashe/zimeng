@@ -11,7 +11,7 @@ interface Props {
 const ItemCard = ({ item }: Props) => {
     return (
         <Link href={`/egb/${item.slug}`}>
-            <Container className='!p-0 grid grid-cols-1 sm:grid-cols-3 bg-gray-1 hover:bg-gray-2 !h-[220px] gap-4 md:gap-8'>
+            <Container className='!p-0 grid grid-cols-1 sm:grid-cols-3 bg-gray-1 hover:bg-gray-2 !sm:h-[220px] gap-4 md:gap-8'>
                 <div className='flex items-center justify-center'>
                     <Image
                         alt=''
