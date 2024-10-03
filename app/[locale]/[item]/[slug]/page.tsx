@@ -1,9 +1,4 @@
-'use client';
-
-import { DocumentNode, useQuery } from '@apollo/client';
-import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { DocumentNode } from 'graphql';
 import {
   GET_JOB_BY_SLUG,
   GET_TENDER_BY_SLUG,
@@ -13,145 +8,128 @@ import {
   GET_SUGGESTED_ARTICLES,
   GET_ARTICLE_BY_SLUG,
 } from '@/graphql/queries';
-import { Job, Tender, Event, Opportunity, Article } from '@/utils/Types';
-import Container from '@/components/ui-components/containter';
-import Text from '@/components/ui-components/text';
-import EventPage from './event';
-import OpportunityPage from './opportunity';
-import TenderPage from './tender';
-import JobPage from './job';
-import { SkeletonLoader } from '../skeleton-loader';
-import CardComponent from '@/components/card';
-import ArticlePage from './article';
+import PageRender from './page-render';
+import apolloClient from '@/lib/apolloClient';
+import { Metadata } from 'next';
 
-type SingleItemType = {
-  item: Job | Tender | Event | Opportunity | Article | null;
-  suggestedItems: Job[] | Article[];
+// Type for query paths
+type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
+
+// Define the queries outside the component to avoid repetition
+const queries: Record<QueryPaths, DocumentNode> = {
+  '/employment': GET_JOB_BY_SLUG,
+  '/tenders': GET_TENDER_BY_SLUG,
+  '/events': GET_EVENT_BY_SLUG,
+  '/opportunities': GET_OPPORTUNITY_BY_SLUG,
+  '/articles': GET_ARTICLE_BY_SLUG,
 };
 
-const initialState: SingleItemType = {
-  item: null,
-  suggestedItems: [],
+const suggestedQueries: Partial<Record<QueryPaths, DocumentNode>> = {
+  '/employment': GET_SUGGESTED_JOBS,
+  '/articles': GET_SUGGESTED_ARTICLES,
 };
 
-const SingleItemPage = () => {
-  const params = useParams();
+// Generate metadata for SEO
+export const generateMetadata = async ({ params }: { params: { slug: string; item: string } }): Promise<Metadata> => {
   const { slug, item } = params;
-  const t = useTranslations('item page');
-
-  const [itemData, setItemData] = useState<SingleItemType>(initialState);
-
   const pathname = `/${item}` as QueryPaths;
 
-  type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
+  const query = queries[pathname];
 
-  const queries: Record<QueryPaths, DocumentNode> = {
-    '/employment': GET_JOB_BY_SLUG,
-    '/tenders': GET_TENDER_BY_SLUG,
-    '/events': GET_EVENT_BY_SLUG,
-    '/opportunities': GET_OPPORTUNITY_BY_SLUG,
-    '/articles': GET_ARTICLE_BY_SLUG,
+  // Fetch the data for the metadata generation
+  const { data } = await apolloClient.query({
+    query,
+    variables: { slug },
+  });
+
+  const singularKeyMap: Record<string, string> = {
+    employment: 'jobCollection',
+    tenders: 'tenderCollection',
+    events: 'eventCollection',
+    opportunities: 'opportunityCollection',
+    articles: 'engineeringMagazineCollection',
   };
 
-  const suggestedQueries: Partial<Record<QueryPaths, DocumentNode>> = {
-    '/employment': GET_SUGGESTED_JOBS,
-    '/articles': GET_SUGGESTED_ARTICLES,
+  const key = pathname.slice(1);
+  const singularKey = singularKeyMap[key];
+  const itemData = data?.[singularKey]?.items[0];
+
+  if (!itemData) {
+    return {
+      title: 'Not Found',
+      description: 'The requested item was not found.',
+    };
+  }
+
+  // Construct metadata based on item type
+  const { title, description, featuredImage, slug: itemSlug } = itemData;
+
+  // Determine the prefix based on the item type
+  let prefixedTitle = title;
+  switch (item) {
+    case 'employment':
+      prefixedTitle = `Job: ${title}`;
+      break;
+    case 'tenders':
+      prefixedTitle = `Tender: ${title}`;
+      break;
+    case 'events':
+      prefixedTitle = `Event: ${title}`;
+      break;
+    case 'opportunities':
+      prefixedTitle = `Opportunity: ${title}`;
+      break;
+  }
+
+  return {
+    title: prefixedTitle,
+    description: typeof description === 'string' ? description : JSON.stringify(description),
+    openGraph: {
+      title: prefixedTitle,
+      description: typeof description === 'string' ? description : JSON.stringify(description),
+      url: `https://zimeng.org/${item}/${itemSlug}`,
+      images: [
+        {
+          url: featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg',
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: prefixedTitle,
+      description: typeof description === 'string' ? description : JSON.stringify(description),
+      images: [featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg'],
+    },
   };
+};
 
-  const query = queries[pathname as QueryPaths];
-  const suggestedQuery = suggestedQueries[pathname as QueryPaths];
+const SingleItemPage = async ({ params }: { params: { slug: string; item: string } }) => {
+  const { slug, item } = params;
+  const pathname = `/${item}` as QueryPaths;
 
-  const { data, loading, error } = query
-    ? useQuery(query, {
-      variables: { slug },
-    })
-    : { data: null, loading: false, error: null };
+  const query = queries[pathname];
+  const suggestedQuery = suggestedQueries[pathname];
 
-  const { data: suggestedData } = suggestedQuery
-    ? useQuery(suggestedQuery, {
+  const { data } = await apolloClient.query({
+    query,
+    variables: { slug },
+  });
+
+  const suggestedData = suggestedQuery
+    ? await apolloClient.query({
+      query: suggestedQuery,
       variables: {
         industry: data?.jobCollection?.items[0]?.industry,
         slug: slug,
         type: data?.jobCollection?.items[0]?.type,
         category: data?.engineeringMagazineCollection?.items[0]?.category,
-        limit: 2
+        limit: 2,
       },
-      skip: !data,
     })
     : { data: null };
-  useEffect(() => {
-    if (data) {
-      const singularKeyMap: Record<string, string> = {
-        employment: 'jobCollection',
-        tenders: 'tenderCollection',
-        events: 'eventCollection',
-        opportunities: 'opportunityCollection',
-        articles: 'engineeringMagazineCollection',
-      };
 
-      const key = pathname.slice(1);
-      const singularKey = singularKeyMap[key];
-
-      const fetchedItem = data[`${singularKey}`]?.items[0] || null;
-      const fetchedSuggestions = suggestedData?.[`suggested${singularKey}`]?.items || [];
-
-
-      setItemData({
-        item: fetchedItem,
-        suggestedItems: fetchedSuggestions,
-      });
-    }
-  }, [data, suggestedData, pathname]);
-
-  useEffect(() => {
-    if (suggestedData) {
-      const singularKeyMap: Record<string, string> = {
-        employment: 'jobCollection',
-        articles: 'engineeringMagazineCollection',
-      };
-
-      const key = pathname.slice(1);
-      const singularKey = singularKeyMap[key];
-
-      const fetchedSuggestions = suggestedData?.[singularKey]?.items || [];
-      setItemData((prev) => ({
-        ...prev,
-        suggestedItems: fetchedSuggestions
-      }))
-    }
-  }, [suggestedData])
-
-  if (loading) return (
-    <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
-      <SkeletonLoader />
-    </Container>
-  );
-  if (error) return <div>Error loading item</div>;
-
-  const { __typename } = itemData?.item || {};
-
-  return (
-    <Container className='min-h-[78vh]'>
-      {__typename === 'Job' && <JobPage job={itemData?.item as Job} />}
-      {__typename === 'Event' && <EventPage event={itemData?.item as Event} />}
-      {__typename === 'Opportunity' && <OpportunityPage opportunity={itemData?.item as Opportunity} />}
-      {__typename === 'Tender' && <TenderPage tender={itemData?.item as Tender} />}
-      {__typename === 'EngineeringMagazine' && <ArticlePage article={itemData?.item as Article} />}
-
-      {itemData?.suggestedItems.length > 0 && <Container>
-        <Text variant='title5' additional='mt-8 md:mt-12'>
-          {t('related')}
-        </Text>
-
-        <Container className="!p-0 mt-4 grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
-          {itemData?.suggestedItems?.map((article, index) => (
-            <CardComponent article={article} key={index} />
-          ))}
-        </Container>
-      </Container>}
-    </Container>
-  );
+  return <PageRender data={data} suggestedData={suggestedData} pathname={pathname} />;
 };
 
 export default SingleItemPage;
-

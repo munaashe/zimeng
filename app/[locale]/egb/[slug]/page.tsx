@@ -1,62 +1,60 @@
-'use client'
-
-import Container from '@/components/ui-components/containter';
 import { GET_EGB_BY_SLUG } from '@/graphql/queries';
-import { Egb } from '@/utils/Types';
-import { useQuery } from '@apollo/client';
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
-import { SkeletonLoader } from '../../[item]/skeleton-loader';
-import Text from '@/components/ui-components/text';
-import Image from 'next/image';
-import RichText from '@/components/ui-components/rich-text';
+import PageRender from './page-render';
+import apolloClient from '@/lib/apolloClient';
+import { Metadata } from 'next';
 
-const ItemPage = () => {
-    const params = useParams();
+export const generateMetadata = async ({ params }: { params: { slug: string; } }): Promise<Metadata> => {
     const { slug } = params;
-    const { data, loading, error } = useQuery(GET_EGB_BY_SLUG, {
+
+    const { data } = await apolloClient.query({
+        query: GET_EGB_BY_SLUG,
         variables: { slug },
     });
-    const [item, setItem] = useState<Egb | null>(null)
-    useEffect(() => {
-        if (data) {
-            const fetchedItem = data.egbCollection.items[0]
-            setItem(fetchedItem)
-        }
-    }, [data])
 
-    if (loading) return (
-        <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
-            <SkeletonLoader />
-        </Container>
-    );
-    return (
-        <Container className=''>
-            <div className='grid grid-cols-1 md:grid-cols-7 md:gap-4 h-full'>
-                <div className='md:col-span-5'>
-                    {item && <>
-                        <Text variant='title4'>
-                            {item.title}
-                        </Text>
-                        <Image
-                            src={item.featuredImage.url}
-                            alt={item.featuredImage.title}
-                            width={100}
-                            height={100}
-                            className='mt-4 md:mt-8 h-[500px] w-auto'
-                        />
-                        <Container className='!pl-0'>
-                            <RichText content={item.details} />
+    const itemData = data?.egbCollection?.items[0];
 
-                        </Container>
-                    </>}
-                </div>
-                <Container className='h-full w-full bg-gray-1 md:col-span-2 hidden md:block'>
-                    sidebar
-                </Container>
-            </div>
-        </Container>
-    )
+    if (!itemData) {
+        return {
+            title: 'Not Found',
+            description: 'The requested item was not found.',
+        };
+    }
+
+    const { title, details, featuredImage, slug: itemSlug } = itemData;
+
+
+
+    return {
+        title: title,
+        description: JSON.stringify(details),
+        openGraph: {
+            title: title,
+            description: JSON.stringify(details),
+            url: `https://zimeng.org/egb/${itemSlug}`,
+            images: [
+                {
+                    url: featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg',
+                    alt: title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: title,
+            description: JSON.stringify(details),
+            images: [featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg'],
+        },
+    };
+};
+const ItemPage = async ({ params }: { params: { slug: string; item: string } }) => {
+    const { slug } = params;
+
+    const { data } = await apolloClient.query({
+        query: GET_EGB_BY_SLUG,
+        variables: { slug },
+    });
+
+    return <PageRender data={data} />
 }
 
 export default ItemPage
