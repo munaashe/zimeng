@@ -87,7 +87,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
     openGraph: {
       title: prefixedTitle,
       description: typeof description === 'string' ? description : JSON.stringify(description),
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${itemSlug}`,
+      url: `https://zimeng.org/${item}/${itemSlug}`,
       images: [
         {
           url: featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg',
