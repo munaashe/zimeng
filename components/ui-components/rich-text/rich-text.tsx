@@ -63,7 +63,7 @@ const customMarkdownOptions = (content: any, linkClassName: string, customLinkEv
                                 src={asset.url}
                                 alt={asset.title || 'Image'}
                                 width={asset.width || 600}
-                                height={asset.height || 400}
+                                height={asset.height || 300}
                                 className="w-full object-cover"
                             />
                         </div>

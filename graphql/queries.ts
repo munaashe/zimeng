@@ -112,11 +112,24 @@ export const GET_OPPORTUNITIES = gql`
 //article
 export const GET_ARTICLE_BY_SLUG = gql`
   query GetArticleBySlug($slug: String!) {
-    engineeringMagazineCollection(where: { slug: $slug }) {
+    engineeringMagazineCollection(where: { slug: $slug }, limit: 1) {
      items {
         title
         description {
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                width
+                height
+              }
+            }
+          }
         }
         publishedDate
         featuredImage {
@@ -135,7 +148,7 @@ export const GET_ARTICLE_BY_SLUG = gql`
 //job
 export const GET_JOB_BY_SLUG = gql`
   query GetJobBySlug($slug: String!) {
-    jobCollection(where: { slug: $slug }) {
+    jobCollection(where: { slug: $slug }, limit: 1) {
        items {
         title
         company
@@ -146,9 +159,37 @@ export const GET_JOB_BY_SLUG = gql`
         deadline
         qualifications{
            json
+           links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
         responsibilities{
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
         slug
         apply{
@@ -162,7 +203,7 @@ export const GET_JOB_BY_SLUG = gql`
 //event
 export const GET_EVENT_BY_SLUG = gql`
   query GetEventBySlug($slug: String!) {
-    eventCollection(where: { slug: $slug }) {
+    eventCollection(where: { slug: $slug }, limit: 1) {
       items {
         title
         date
@@ -170,6 +211,20 @@ export const GET_EVENT_BY_SLUG = gql`
         slug
         description {
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
         rsvp {
           json
@@ -186,7 +241,7 @@ export const GET_EVENT_BY_SLUG = gql`
 //opportunity
 export const GET_OPPORTUNITY_BY_SLUG = gql`
   query GetOpportunityBySlug($slug: String!) {
-    opportunityCollection(where: { slug: $slug }) {
+    opportunityCollection(where: { slug: $slug }, limit: 1) {
       items {
         title
         slug
@@ -194,6 +249,20 @@ export const GET_OPPORTUNITY_BY_SLUG = gql`
         institution
         description {
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
       }
     }
@@ -203,7 +272,7 @@ export const GET_OPPORTUNITY_BY_SLUG = gql`
 //tender
 export const GET_TENDER_BY_SLUG = gql`
   query GetTenderBySlug($slug: String!) {
-    tenderCollection(where: { slug: $slug }) {
+    tenderCollection(where: { slug: $slug }, limit: 1) {
        items {
         title
         slug
@@ -211,6 +280,20 @@ export const GET_TENDER_BY_SLUG = gql`
         institution
         details {
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
         bid {
           json
@@ -243,7 +326,7 @@ export const GET_EGB = gql`
 
 export const GET_EGB_BY_SLUG = gql`
    query GetEgbBySlug($slug: String!) {
-    egbCollection(where: { slug: $slug }) {
+    egbCollection(where: { slug: $slug }, limit: 5) {
       items {
         title
         type
@@ -252,8 +335,22 @@ export const GET_EGB_BY_SLUG = gql`
           url
           title
         }
-        details{
+        details {
           json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                title
+                description
+                width
+                height
+              }
+            }
+          }
         }
         slug
       }
