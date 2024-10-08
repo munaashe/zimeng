@@ -83,7 +83,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
       break;
     case 'events': // Events: Use description and poster for image
       description = getRichTextPlainText(itemData.description?.json);
-      imageUrl = poster?.url || featuredImage?.url;
+      imageUrl = poster?.url ?? 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg'
       break;
     case 'opportunities': // Opportunities: Use description in rich text format
       description = getRichTextPlainText(itemData.description?.json);
@@ -114,6 +114,8 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
   }
 
   // Return the metadata with the relevant information
+
+  console.log(truncatedDescription)
   return {
     title: prefixedTitle,
     description: truncatedDescription,
