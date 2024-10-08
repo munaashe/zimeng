@@ -58,13 +58,13 @@ const customMarkdownOptions = (content: any, linkClassName: string, customLinkEv
                 const asset = assetMap.get(node.data.target.sys.id);
                 if (asset) {
                     return (
-                        <div className="mb-6">
+                        <div className="mb-6 w-full flex justify-start items-start">
                             <Image
                                 src={asset.url}
                                 alt={asset.title || 'Image'}
                                 width={asset.width || 600}
                                 height={asset.height || 300}
-                                className="w-full object-cover"
+                                className="w-full object-contain !max-h-[540px] w-auto"
                             />
                         </div>
                     );
