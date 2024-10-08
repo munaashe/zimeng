@@ -11,6 +11,7 @@ import {
 import PageRender from './page-render';
 import apolloClient from '@/lib/apolloClient';
 import { Metadata } from 'next';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 // Type for query paths
 type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
@@ -28,6 +29,11 @@ const suggestedQueries: Partial<Record<QueryPaths, DocumentNode>> = {
   '/employment': GET_SUGGESTED_JOBS,
   '/articles': GET_SUGGESTED_ARTICLES,
 };
+
+const getRichTextPlainText = (richText: any): string => {
+  return documentToPlainTextString(richText);
+};
+
 
 // Generate metadata for SEO
 export const generateMetadata = async ({ params }: { params: { slug: string; item: string } }): Promise<Metadata> => {
@@ -61,10 +67,36 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
     };
   }
 
-  // Construct metadata based on item type
-  const { title, description, featuredImage, slug: itemSlug } = itemData;
+  // Destructure fields from the fetched data
+  const { title, featuredImage, slug: itemSlug, poster } = itemData;
 
-  // Determine the prefix based on the item type
+  let description = '';
+  let imageUrl = featuredImage?.url;
+
+  // Handle description and image URL based on the item type
+  switch (item) {
+    case 'employment': // Jobs: Use description in rich text format
+      description = getRichTextPlainText(itemData.qualifications?.json);
+      break;
+    case 'tenders': // Tenders: Use details in rich text format
+      description = getRichTextPlainText(itemData.details?.json);
+      break;
+    case 'events': // Events: Use description and poster for image
+      description = getRichTextPlainText(itemData.description?.json);
+      imageUrl = poster?.url || featuredImage?.url;
+      break;
+    case 'opportunities': // Opportunities: Use description in rich text format
+      description = getRichTextPlainText(itemData.description?.json);
+      break;
+    case 'articles': // Articles: Use excerpt field directly
+      description = itemData.excerpt;
+      break;
+    default:
+      description = 'No description available.';
+  }
+
+  const truncatedDescription = description?.length > 160 ? `${description.substring(0, 157)}...` : description;
+
   let prefixedTitle = title;
   switch (item) {
     case 'employment':
@@ -81,16 +113,17 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
       break;
   }
 
+  // Return the metadata with the relevant information
   return {
     title: prefixedTitle,
-    description: typeof description === 'string' ? description : JSON.stringify(description),
+    description: truncatedDescription,
     openGraph: {
       title: prefixedTitle,
-      description: typeof description === 'string' ? description : JSON.stringify(description),
+      description: truncatedDescription,
       url: `https://zimeng.org/${item}/${itemSlug}`,
       images: [
         {
-          url: featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg',
+          url: imageUrl || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg',
           alt: title,
         },
       ],
@@ -98,8 +131,8 @@ export const generateMetadata = async ({ params }: { params: { slug: string; ite
     twitter: {
       card: 'summary_large_image',
       title: prefixedTitle,
-      description: typeof description === 'string' ? description : JSON.stringify(description),
-      images: [featuredImage?.url || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg'],
+      description: truncatedDescription,
+      images: [imageUrl || 'https://images.ctfassets.net/x9qfewrt309k/27XpWIwqZ5QjJw069l12RF/de152f627be2c5f294c5ee3b75c8276e/WhatsApp_Image_2024-09-28_at_21.19.53.jpeg'],
     },
   };
 };
