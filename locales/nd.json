@@ -11,7 +11,7 @@
     "footer": {
         "terms": "isigaba",
         "privacy": "ubumfihlo",
-        "contact": "Ucingo Lwethu",
+        "contact": "Sifoneleni",
         "rights": "Amalungelo"
     },
     "months": {
@@ -31,32 +31,32 @@
     "categories": "Izigaba",
     "filters": "Filters",
     "industries": "Industries",
-    "job types": "Job types",
+    "job types": "Imihlobo Yemisebenzi",
     "all": "Konke",
-    "details": "Imininingwane",
-    "reservations": "Reservations",
+    "details": "Details",
+    "reservations": "Ukubhalisa",
     "bid": "Ukubhida",
-    "qualifications": "Qualifications",
-    "responsibilities": "Imisebenzi ephathelene",
-    "apply": "Indlela yokufaka isicelo",
+    "qualifications": "Okufunakalayo",
+    "responsibilities": "Imisebenzi",
+    "apply": "Isicelo",
     "item page": {
-        "employment": "Employment Opportunities",
-        "events": "Engineering Events",
+        "employment": "Ukuqatshwa",
+        "events": "Imicimbi Yobunjiniyela",
         "tenders": "Advertised Tenders",
-        "opportunities": "Engineering Opportunities",
-        "related": "Related",
+        "opportunities": "Amathuba Omsebenzi",
+        "related": "Okuhlobanayo",
         "loading": "Loading More...",
-        "no more": "No more articles to load"
+        "no more": "Akuselandaba zokubala eziseleyo"
     },
     "egb": {
-        "title": "Engineers Giving Back",
-        "text": "Explore the numerous ways you can make a difference",
-        "contact": "Contact Us",
+        "title": "Onjiniyela bephindisela emphakathini",
+        "text": "Indlela zokunceda abanye ngazo",
+        "contact": "Sifoneleni",
         "projects": "Projects",
-        "reports": "Reports"
+        "reports": "Imibiko"
     },
-    "by": "By:",
+    "by": "Ngu:",
     "loading": "Loading More...",
-    "no more": "No more articles to load",
+    "no more": "Akuselandaba zokubala eziseleyo",
     "sponsored": "Sponsored"
 }
