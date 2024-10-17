@@ -26,6 +26,7 @@ const initialState: ItemsType = {
 }
 
 type DataItems = Tender[] | Job[] | EventType[] | Opportunity[]
+type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
 
 export type JobFilterItemsType = {
     industry: string | null;
@@ -37,17 +38,15 @@ const filterInitialState: JobFilterItemsType = {
     jobType: null
 }
 
+
 const ItemsPage = () => {
     const pathname = usePathname();
     const t = useTranslations('item page');
     const limit = 10;
-    const [skip, setSkip] = useState(0);
     const [hasMore, setHasMore] = useState(true);
-
     const [items, setItems] = useState<ItemsType>(initialState);
-    const [jobFilterItems, setJobFilterItems] = useState<JobFilterItemsType>(filterInitialState)
-
-    type QueryPaths = '/employment' | '/tenders' | '/events' | '/opportunities' | '/articles';
+    const [jobFilterItems, setJobFilterItems] = useState<JobFilterItemsType>(filterInitialState);
+    const [skip, setSkip] = useState(0);
 
     const queries: Partial<Record<QueryPaths, DocumentNode>> = {
         '/employment': GET_JOBS,
@@ -61,7 +60,7 @@ const ItemsPage = () => {
 
     const { data, loading, error, fetchMore, refetch } = query
         ? useQuery(query, {
-            variables: { limit, skip: 0 }, // Initial fetch with skip 0
+            variables: { limit, skip },
             notifyOnNetworkStatusChange: true,
         })
         : { data: null, loading: false, error: null, fetchMore: null, refetch: () => Promise.resolve() };
@@ -95,6 +94,16 @@ const ItemsPage = () => {
             }));
         }
     }, [data, pathname]);
+
+    useEffect(() => {
+        setSkip(0); 
+        refetch({
+            limit,
+            skip: 0,
+            industry: jobFilterItems.industry || null,
+            type: jobFilterItems.jobType || null,
+        });
+    }, [jobFilterItems, refetch]);
 
     const loadMoreItems = useCallback(() => {
         if (!fetchMore) return;
@@ -140,7 +149,7 @@ const ItemsPage = () => {
         <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0 !md:px-8">
             <Text>{t(pathname.slice(1))}</Text>
 
-            {pathname === '/employment' &&
+            {pathname === '/employment' && (
                 <JobsFilter
                     industries={items.industries}
                     jobTypes={items.jobTypes}
@@ -150,15 +159,9 @@ const ItemsPage = () => {
                             ...prev,
                             [type]: value,
                         }));
-                        setSkip(0);
-                        refetch({
-                            skip: 0,
-                            limit,
-                            industry: jobFilterItems.industry || null,
-                            type: jobFilterItems.jobType || null,
-                        });
                     }}
-                />}
+                />
+            )}
 
             <InfiniteScroll
                 dataLength={items.dataItems.length}
