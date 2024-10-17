@@ -76,3 +76,35 @@
     margin: 1rem 0;
     /* Improve spacing between paragraphs */
 }
+
+.layout-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .layout-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .with-sidebar {
+        grid-column: span 3;
+    }
+
+    .full-width {
+        grid-column: span 4;
+    }
+
+    .sidebar {
+        grid-column: span 1;
+    }
+}
+
+.main-content {
+    padding: 0;
+}
+
+.sidebar {
+    padding-top: 0;
+}
