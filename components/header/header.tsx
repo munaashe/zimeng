@@ -43,7 +43,7 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className=' mb-4 border-b-[2px] border-slate-200 mr-4'>
+            <header className=' mb-4 border-b-[2px] border-slate-200 mr-4 h-[60px]'>
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link href='/' className="flex items-center flex-1">
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                                 } justify-between items-center w-full lg:flex lg:w-auto lg:order-1 bg-white z-[100]`}
                             id="mobile-menu-2"
                         >
-                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0">
+                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0 h-screen w-screen md:h-[60px] md:w-full !bg-white sticky top-0 md:relative">
                                 {menuItems.map((item) => {
                                     const isActive = pathname === item.href;
                                     return (
