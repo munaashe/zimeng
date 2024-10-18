@@ -16,19 +16,20 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
     const [selectedTab, setSelectedTab] = useState<'industries' | 'job types'>('industries')
     const [filtersOpen, setFiltersOpen] = useState<boolean>(false)
     const t = useTranslations()
+
     return (
         <div className='mt-8 '>
-
             <div className='flex justify-start items-end w-full gap-2'>
-                <div className={`px-2  flex justify-center items-center gap-4 py-4 cursor-pointer duration-300 ${filtersOpen ? 'bg-gray-2 hover:bg-gray-2 text-stone-800' : 'bg-brown hover:bg-green-500 text-white '}`}
+                <div className={`px-2 flex justify-center items-center gap-4 py-4 cursor-pointer duration-300 ${filtersOpen ? 'bg-gray-2 hover:bg-gray-2 text-stone-800' : 'bg-brown hover:bg-green-500 text-white '}`}
                     onClick={() => setFiltersOpen(!filtersOpen)}
                 >
+                    {/* Filter Toggle Icon */}
                     <svg width="30px" height="30px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <g id="Layer_2">
                             <g id="icons_Q2">
                                 <path d="M24,7.7,29.3,16H18.6L24,7.7M24,2a2.1,2.1,0,0,0-1.7,1L13.2,17a2.3,2.3,0,0,0,0,2,1.9,1.9,0,0,0,1.7,1H33a2.1,2.1,0,0,0,1.7-1,1.8,1.8,0,0,0,0-2l-9-14A1.9,1.9,0,0,0,24,2Z" fill={`${filtersOpen ? '#292524' : 'white'}`} />
-                                <path d="M43,43H29a2,2,0,0,1-2-2V27a2,2,0,0,1,2-2H43a2,2,0,0,1,2,2V41A2,2,0,0,1,43,43ZM31,39H41V29H31Z" fill={`${filtersOpen ? '#292524' : 'white'}`} />
-                                <path d="M13,28a6,6,0,1,1-6,6,6,6,0,0,1,6-6m0-4A10,10,0,1,0,23,34,10,10,0,0,0,13,24Z" fill={`${filtersOpen ? '#292524' : 'white'}`} />
+                                <path d="M43,43H29a2,2,0,0,1-2-2V27a2,2,0,0,1,2-2H43a2,2,0,0,1,2,2V41A2,2,0,0,1,43,43ZM31,39H41V29H31Z" fill={`${filtersOpen ? '#292524' : '#ffffff'}`} />
+                                <path d="M13,28a6,6,0,1,1-6,6,6,6,0,0,1,6-6m0-4A10,10,0,1,0,23,34,10,10,0,0,0,13,24Z" fill={`${filtersOpen ? '#292524' : '#ffffff'}`} />
                             </g>
                         </g>
                     </svg>
@@ -41,10 +42,11 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                 </div>
 
                 {filtersOpen && <>
-                    <div className={` flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'industries' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
+                    {/* Industry and Job Type Tab Selector */}
+                    <div className={`flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'industries' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
                         onClick={() => setSelectedTab('industries')}
                     >
-                        <svg fill="#ffffff" height='20px' width='25px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                         <svg fill="#ffffff" height='20px' width='25px' viewBox="0 -35.58 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                             <g id="SVGRepo_iconCarrier"> <style type="text/css"></style>
@@ -57,10 +59,10 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                             {t('industries')}
                         </div>
                     </div>
-                    <div className={` flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'job types' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
+                    <div className={`flex justify-center items-center gap-2 p-2 cursor-pointer duration-300 text-white ${selectedTab === 'job types' ? 'bg-green-500 hover:bg-green-700' : 'bg-brown hover:bg-[#6F401F]'}`}
                         onClick={() => setSelectedTab('job types')}
                     >
-                        <svg viewBox="0 0 24 24" width='25px' height='20px' fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                           <svg viewBox="0 0 24 24" width='25px' height='20px' fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                             <g id="SVGRepo_iconCarrier">
@@ -74,39 +76,39 @@ const JobsFilter = ({ industries = [], jobTypes = [], filterItems, onFilterChang
                 </>}
             </div>
 
-
+            {/* Industries and Job Types */}
             {filtersOpen && <>
-                {selectedTab === 'industries' && <Container className='w-full bg-gray-2 flex gap-4'>
-                    <div onClick={() => onFilterChange('industry', null)}
-                        className={`p-2 bg-brown  text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.industry === null ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
-                        {t('all')}
-                    </div>
-                    {industries.map((industry, index) => (
-                        <div key={index} onClick={() => onFilterChange('industry', industry)}
-                            className={`p-2 bg-brown  text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.industry === industry ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
-                            {industry?.charAt(0).toUpperCase() + industry?.slice(1)}
+                {selectedTab === 'industries' && (
+                    <Container className='w-full bg-gray-2 flex flex-wrap gap-4'>
+                        <div onClick={() => onFilterChange('industry', null)}
+                            className={`p-2 bg-brown text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.industry === null ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
+                            {t('all')}
                         </div>
+                        {industries.map((industry, index) => (
+                            <div key={index} onClick={() => onFilterChange('industry', industry)}
+                                className={`p-2 bg-brown text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.industry === industry ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
+                                {industry?.charAt(0).toUpperCase() + industry?.slice(1)}
+                            </div>
+                        ))}
+                    </Container>
+                )}
 
-                    ))}
-                </Container>
-                }
-                {
-                    selectedTab === 'job types' && <Container className='w-full bg-gray-2 flex gap-4'>
+                {selectedTab === 'job types' && (
+                    <Container className='w-full bg-gray-2 flex flex-wrap gap-4'>
                         <div onClick={() => onFilterChange('jobType', null)}
-                            className={`p-2 bg-brown  text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.jobType === null ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
+                            className={`p-2 bg-brown text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.jobType === null ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
                             {t('all')}
                         </div>
                         {jobTypes.map((job, index) => (
                             <div key={index} onClick={() => onFilterChange('jobType', job)}
-                                className={`p-2 bg-brown  text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.jobType === job ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
+                                className={`p-2 bg-brown text-white text-[14px] md:text-[16px] font-semibold cursor-pointer ${filterItems.jobType === job ? 'bg-green-500 hover:bg-green-700' : 'hover:bg-[#653b1e]'}`}>
                                 {job?.charAt(0).toUpperCase() + job?.slice(1)}
                             </div>
-
                         ))}
                     </Container>
-                }
+                )}
             </>}
-        </div >
+        </div>
     )
 }
 
