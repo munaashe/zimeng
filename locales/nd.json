@@ -2,15 +2,15 @@
     "header": {
         "Articles": "Indaba",
         "Employment": "Umsebenzi",
-        "Tenders": "Ama tender",
+        "Tenders": "Ama Tender",
         "Events": "Imicimbi",
         "Giving Back": "Ukubisela",
-        "language": "Tshintsha ulimi",
-        "Opportunities": "Opportunities"
+        "language": "Tshintsha Ulimi",
+        "Opportunities": "AmaThuba"
     },
     "footer": {
-        "terms": "isigaba",
-        "privacy": "ubumfihlo",
+        "terms": "Isigaba",
+        "privacy": "Ubumfihlo",
         "contact": "Sifoneleni",
         "rights": "Amalungelo"
     },
@@ -29,8 +29,8 @@
         "Dec": "Mpalakazi"
     },
     "categories": "Izigaba",
-    "filters": "Filters",
-    "industries": "Industries",
+    "filters": "AmaFilita",
+    "industries": "Ama Industry",
     "job types": "Imihlobo Yemisebenzi",
     "all": "Konke",
     "details": "Details",
@@ -45,7 +45,7 @@
         "tenders": "Advertised Tenders",
         "opportunities": "Amathuba Omsebenzi",
         "related": "Okuhlobanayo",
-        "loading": "Loading More...",
+        "loading": "Veza Okunye...",
         "no more": "Akuselandaba zokubala eziseleyo"
     },
     "egb": {
@@ -56,7 +56,7 @@
         "reports": "Imibiko"
     },
     "by": "Ngu:",
-    "loading": "Loading More...",
+    "loading": "Veza Okunye...",
     "no more": "Akuselandaba zokubala eziseleyo",
     "sponsored": "Sponsored"
 }
