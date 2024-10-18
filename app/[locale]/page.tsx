@@ -97,23 +97,25 @@ export default function Home() {
   }
 
   return (
-    <Container className="min-h-[70vh] mb-4 md:mb-12 !py-0">
-      <HeroCarousel articles={heroArticles} />
-      <InfiniteScroll
-        dataLength={articles.length}
-        next={loadMoreArticles}
-        hasMore={hasMore}
-        loader={<p>{t('loading')}</p>}
-        endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">{t('no more')}</Text>}
-      >
-        <Articles
-          articles={articles}
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategorySelect={handleCategorySelect}
-        />
-      </InfiniteScroll>
-    </Container>
+    <div className=" w-screen md:w-full">
+      <Container className=" mb-4 md:mb-12 ">
+        <HeroCarousel articles={heroArticles} />
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={loadMoreArticles}
+          hasMore={hasMore}
+          loader={<p>{t('loading')}</p>}
+          endMessage={<Text variant="body2" additional="pt-4 md:pt-12 text-center !text-gray-300">{t('no more')}</Text>}
+        >
+          <Articles
+            articles={articles}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategorySelect}
+          />
+        </InfiniteScroll>
+      </Container>
+    </div>
   );
 }
 

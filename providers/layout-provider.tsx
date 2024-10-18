@@ -10,7 +10,7 @@ export default function LayoutProvider({
 }: {
     children: React.ReactNode;
 }) {
-    const pathname = usePathname(); // Use usePathname from next/navigation
+    const pathname = usePathname();
 
     // Define routes where the sidebar should not be shown
     const noSidebarRoutes = ["/privacy", "/contact", "/egb", "/terms"];
@@ -21,15 +21,20 @@ export default function LayoutProvider({
     return (
         <main>
             <Header />
-            <Container className={`!p-0 grid grid-cols-1 ${shouldShowSidebar ? 'md:grid-cols-7' : ''} md:gap-4`}>
-                <div className={`${shouldShowSidebar ? 'md:col-span-5' : '!md:col-span-7'}`}>
-                    {children}
-                </div>
-                {shouldShowSidebar && (
-                    <div className="md:col-span-2">
-                        <Sidebar />
+            <Container>
+                <div className={`layout-wrapper`}>
+                    {/* Main content */}
+                    <div className={`main-content ${shouldShowSidebar ? 'with-sidebar' : 'full-width'}`}>
+                        {children}
                     </div>
-                )}
+
+                    {/* Sidebar */}
+                    {shouldShowSidebar && (
+                        <div className="sidebar">
+                            <Sidebar />
+                        </div>
+                    )}
+                </div>
             </Container>
             {!shouldShowSidebar && <Footer />}
         </main>

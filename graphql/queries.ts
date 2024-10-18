@@ -37,8 +37,13 @@ export const GET_ARTICLES_WITH_CATEGORIES = gql`
 `;
 
 export const GET_JOBS = gql`
-  query GetJobs {
-    jobCollection {
+  query GetJobs($type: String, $industry: [String]) {
+    jobCollection(where: {
+      OR: [
+        { type: $type, industry_contains_some: $industry },
+        { type: null, industry_contains_some: null }
+      ]
+    }) {
       items {
         title
         company
