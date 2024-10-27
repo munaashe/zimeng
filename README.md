@@ -1,66 +1,11 @@
-# Project Name
+# Zim Engineering Community
 
-Raha Beach Denis
+A platform for engineers and innovators in Zim to learn of the opportunities, current events and news about their professions. Feel free to make contributions 
 
-## Getting Started
+## Tech Stack Used
 
-These instructions will guide you on how to get the project up and running on your local machine.
 
-### Prerequisites
-
-- Git (https://git-scm.com/)
-- Node.js (https://nodejs.org/)
-- Yarn (https://yarnpkg.com/)
-
-### Installation
-
-1. Clone the repository using the following command:
-
-```shell
-git clone https://github.com/munaashe/raha-beach-denis.git
-```
-
-2. Create an environment file named `env.local` in the root folder of the project and add the following environment variable:
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:5000
-```
-
-3. Install the project dependencies by running the following command:
-
-```shell
-yarn install
-```
-
-### Starting the JSON Server
-
-1. Start the JSON server by running the following command:
-
-```shell
-yarn serve
-```
-
-### Starting the Development Environment
-
-1. Open another terminal and start the development environment by running the following command:
-
-```shell
-yarn dev
-```
-
-2. The project will now be running at `http://localhost:3000` in your browser.
-
-## Live Environment
-
-The live environment of this project can be accessed at [https://raha-denis.vercel.app](https://raha-denis.vercel.app).
-
-The live JSON server is running at [https://json-books-server.vercel.app/](https://json-books-server.vercel.app/).
-
-## Justifications
-
-### Next.js
-
-Next.js is a powerful framework for building React applications. It provides a wide range of features and optimizations that enhance the development process. Some of the reasons for using Next.js in this project include:
+## Next.js
 
 - Server-side rendering (SSR) for improved performance and SEO.
 - Automatic code splitting for faster page loading.
@@ -105,14 +50,14 @@ Next-Intl is a localization library for Next.js applications that provides a sea
 
 - **Flexible and Scalable**: Next-Intl provides a flexible architecture that allows for easy integration with other localization tools and libraries. It can be extended and customized to meet the specific requirements of the project, making it suitable for both small and large-scale applications.
 
-### Using React Query
 
-1. **Simplified Data Fetching:** React Query simplifies data fetching from APIs by abstracting away complexities such as loading states, caching, and error handling. Its intuitive hooks like `useQuery` and `useMutation` streamline data fetching and updating with minimal boilerplate code.
+### GraphQL
 
-2. **Automatic Cache Management:** React Query automatically manages data caching and invalidation. It intelligently updates the cache when data changes or expires, reducing unnecessary network requests and improving application performance.
+- **Declarative Data Fetching**: GraphQL enables precise and efficient data fetching by allowing you to specify exactly the data your application needs. With tools like Apollo Client, fetching, caching, and managing data from GraphQL APIs becomes more intuitive and streamlined, as you can query deeply nested data in a single request without multiple endpoints.
 
-3. **Real-time and Optimistic Updates:** React Query supports real-time updates with optimistic updates. It allows immediate local cache updates with new data, followed by background fetches to synchronize with the server. This ensures a smooth user experience and reduces perceived latency.
+- **Automatic Cache Management and Normalization**: Apollo Client, one of the most popular libraries for GraphQL, automatically manages and normalizes the cache. It provides fine-grained control over caching strategies and lets you define how and when to refetch data, preventing unnecessary network requests and improving performance.
 
-4. **Integrated Pagination and Infinite Scrolling:** React Query provides built-in support for pagination and infinite scrolling. Hooks like `useInfiniteQuery` and `usePaginatedQuery` simplify the implementation of paginated data fetching, loading additional pages as the user scrolls.
+- **Real-time Data and Optimistic UI**: GraphQL supports real-time data with subscriptions, often used with WebSockets. Libraries like Apollo Client and Relay handle subscriptions seamlessly, allowing you to keep data updated without manual polling. Optimistic updates let you temporarily update the UI immediately upon a mutation, offering a smooth, low-latency experience while the actual update completes on the server.
 
-These justifications highlight the benefits of using React Query for data management in React applications. Its streamlined data fetching, automatic cache management, real-time updates, and built-in pagination support make it a powerful tool for efficient and responsive applications.
+- **Pagination and Infinite Scrolling**: GraphQL is well-suited for implementing pagination and infinite scrolling through cursor-based pagination or offset-based pagination. GraphQL clients provide support for managing these patterns, making it easier to load more data incrementally as users scroll. For example, Apollo Client’s fetchMore function and Relay’s pagination container offer straightforward solutions for paginated data fetching.
+
