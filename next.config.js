@@ -16,6 +16,7 @@ module.exports = withNextIntl({
         CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT
     },
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: "https",
