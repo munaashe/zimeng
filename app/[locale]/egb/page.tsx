@@ -85,7 +85,7 @@ const GivingBack = () => {
                         alt={egbData.message?.featuredImage.title || ''}
                         width={400}
                         height={400}
-                        className='h-[300px] w-auto object-contain'
+                        className='h-[300px] w-auto object-contain my-4'
                     />
                     <RichText content={egbData.message?.details} />
                 </div>
