@@ -76,7 +76,7 @@ const GivingBack = () => {
 
             {/* Fixed Sidebar */}
             <div className='hidden lg:block lg:col-span-2 !py-0'>
-                <div className="sticky top-0 h-[100vh] flex flex-col justify-start items-start overflow-y-scroll">
+                <div className="sticky top-0 h-[100vh] flex flex-col justify-start items-start overflow-y-scroll !px-4">
                     <Text variant='title5' additional=''>
                         {egbData.message?.title}
                     </Text>
