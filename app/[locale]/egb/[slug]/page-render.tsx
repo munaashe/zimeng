@@ -36,7 +36,7 @@ const PageRender = ({ data }: Props) => {
                     alt={item.featuredImage.title}
                     width={100}
                     height={100}
-                    className='mt-4 md:mt-8 h-[500px] w-auto object-contain'
+                    className='mt-4 md:mt-8 h-[500px] w-auto object-cover'
                 />
                 <Container className='!pl-0'>
                     <RichText content={item.details} />
