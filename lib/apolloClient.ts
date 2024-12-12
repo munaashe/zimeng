@@ -6,6 +6,14 @@ const apolloClient = new ApolloClient({
         Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
     },
     cache: new InMemoryCache(),
+    defaultOptions: {
+        query: {
+            fetchPolicy: "network-only",
+        },
+        watchQuery: {
+            fetchPolicy: "network-only",
+        },
+    },
 });
 
 export default apolloClient;
