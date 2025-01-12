@@ -30,7 +30,7 @@ const ArticlePage = ({ article }: Props) => {
                 alt={article.featuredImage.url}
                 width={100}
                 height={100}
-                className='mt-4 md:mt-8 h-[500px] w-auto object-contain lg:object-cover'
+                className='mt-4 md:mt-8 h-full md:h-[500px] w-auto object-contain lg:object-cover'
             />
             <Text variant='label1' additional='italic !text-[16px] whitespace-nowrap my-4'>
                 {t('by') + ' '} {article.author.name}
