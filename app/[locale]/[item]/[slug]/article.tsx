@@ -13,7 +13,7 @@ type Props = {
 const ArticlePage = ({ article }: Props) => {
     const t = useTranslations();
     return (
-        <Container className=''>
+        <Container className='!p-0'>
             <Text variant='title4'>
                 {article.title}
             </Text>
