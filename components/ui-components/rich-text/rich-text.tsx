@@ -52,7 +52,7 @@ const customMarkdownOptions = (content: any, linkClassName: string, customLinkEv
             [INLINES.HYPERLINK]: (node: any, children: any) => (
                 <a
                     href={node.data.uri}
-                    className={`text-blue-600 hover:text-blue-800 underline ${linkClassName}`}
+                    className={`text-blue-600 hover:text-blue-800 ${linkClassName}`}
                     onClick={customLinkEventHandler}
                     target="_blank"
                     rel="noopener noreferrer"
